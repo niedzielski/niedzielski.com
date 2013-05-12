@@ -3,7 +3,7 @@ layout: default
 title: stephen.niedzielski.com
 ---
 
-# stephen.niedzielski.com
-## coder
+**stephen.niedzielski.com**<br />
+coder
 
 welcome to my homepage!
