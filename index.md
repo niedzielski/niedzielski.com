@@ -3,8 +3,8 @@ layout: default
 title: stephen niedzielski
 ---
 
-**Stephen Niedzielski**<br />
-Coder
+**stephen niedzielski**<br />
+coder
 
 Hi, my name is Stephen. I'm a programmer, Linux guy, and gamer.
 
