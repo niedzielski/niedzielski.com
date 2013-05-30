@@ -3,12 +3,15 @@ layout: default
 title: stephen niedzielski
 ---
 
-**stephen niedzielski**<br />
-coder
+- [Me](me)
+  - [Email](mailto:stephen@niedzielski.com)
+  - [Resume](niedzielski_resume.pdf)
+- [Projects](projects)
+  - Close Up
+  - dotfiles
+  - swankmankia
+  - DreamTangle Kernel
 
-Hi, my name is Stephen. I'm a programmer, Linux guy, and gamer.
-
-* [Email](mailto:stephen@niedzielski.com)
-* [Resume](niedzielski_resume.pdf)
-* [GitHub](http://github.com/niedzielski)
-* [Twitter](http://twitter.com/niedzielski)
+<div id='copyright'>
+  Copyright 2003 - 2013 Stephen Niedzielski. All rights reserved.
+</div>

@@ -1,11 +1,14 @@
 {% include top.html %}
 
-<body class="wrap">
-  {% include header.html %}
+<body>
+  {{ <div id='banner'><a href='/'>NIEDZIELSKI</a></div> }}
+  <div id='page'>
+    {% include header.html %}
 
-  {{ content }}
+    {{ content }}
 
-  {% include footer.html %}
-  {% include analytics.html %}
+    {% include footer.html %}
+    {% include analytics.html %}
+  </div>
 </body>
 </html>
