@@ -1,17 +1,20 @@
 ---
 layout: default
-title: stephen niedzielski
+title: NIEDZIELSKI
 ---
 
-- [Me](me)
-  - [Email](mailto:stephen@niedzielski.com)
-  - [Resume](niedzielski_resume.pdf)
-- [Projects](projects)
-  - Close Up
-  - dotfiles
-  - swankmankia
-  - DreamTangle Kernel
+<!--<div class='fulljustify'>
+ME EMAIL RESUME PROJECTS
+</div>-->
 
-<div id='copyright'>
-  Copyright 2003 - 2013 Stephen Niedzielski. All rights reserved.
-</div>
+- [ME](me.html)
+  - [EMAIL](mailto:stephen@niedzielski.com)
+  - [RESUME](niedzielski_resume.pdf)
+- [PROJECTS](https://github.com/niedzielski?tab=repositories)
+  - CLOSE UP  
+    Fun Android imaging app.
+  - [DOT FILES](https://github.com/niedzielski/rubadub)
+  - [SWANKMANIA](https://github.com/niedzielski/swankmania)  
+    FPGA graphics card.
+  - [DREAMTANGLE KERNEL](https://github.com/niedzielski/dkernel)  
+    preemptive kernel.

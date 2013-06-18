@@ -1,5 +1,5 @@
 body {
-  font-family: sans-serif, Tahoma, Geneva;
+  font-family: sans-serif, Tahoma, Verdana, Arial;
 }
 
 #page {
@@ -25,7 +25,7 @@ hr {
   width: 100%;
   background: #2888fe;
   color: #fff;
-  text-shadow: 0 0 #fff, 0 .05em #fff, 0 0 #fff, 0 -.05em #fff;
+  text-shadow: 0 0 #fff, 0 .055em #fff, 0 0 #fff, 0 -.055em #fff;
   margin: 0 0 1%;
 }
 
@@ -40,6 +40,16 @@ hr {
   text-decoration: none;
 }
 
+#footer {
+  margin-top: .75em;
+}
+
+a:link {
+  color: #2888fe;
+}
+a:visited {
+  color: #999;
+}
 
 ul
 {
@@ -52,6 +62,10 @@ ul
   margin: 1% 0 1%;
   font-size: 10pt;
   color: #ccc;
+}
+
+h1 {
+  margin: .3em 0 .3em 0;
 }
 
 body {  
