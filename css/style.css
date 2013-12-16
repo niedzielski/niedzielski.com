@@ -1,72 +1,38 @@
-body {
-  font-family: sans-serif, Tahoma, Verdana, Arial; }
-
-#page {
-  width: 80%;
-  max-width: 1440px;
-  margin: 0 auto; }
-
-li {
-  margin: 0;
-  padding: 0; }
-
-hr {
-  background: #cccccc;
-  border: none;
-  display: block;
-  height: 1px; }
-
-#banner {
-  width: 100%;
-  background: #2888fe;
-  color: white;
-  text-shadow: 0 0 white, 0 0.055em white, 0 0 white, 0 -0.055em white;
-  margin: 0 0 1%; }
-
-#banner,
-#banner a:link,
-#banner a:visited {
-  color: white; }
-
-#banner a:link,
-#banner a:visited {
-  text-decoration: none; }
-
-#footer {
-  margin-top: 0.75em; }
-
 a:link {
   color: #2888fe; }
 
 a:visited {
   color: #999999; }
 
+a:active, a:hover {
+  color: magenta; }
+
 ul {
-  list-style: square;
-  margin: 0;
-  padding-left: 3%; }
+  list-style: square; }
+
+::selection, ::-moz-selection {
+  background: #2888fe;
+  color: white; }
+
+#page {
+  margin: 0 auto; }
+
+#content {
+  margin: 0.75em; }
+
+#footer {
+  margin: 0.75em; }
+
+#banner,
+#banner a:link,
+#banner a:visited {
+  background: #2888fe;
+  text-shadow: 0 0 white, 0 0.055em white, 0 0 white, 0 -0.055em white;
+  font-size: 2.5em;
+  text-align: center;
+  color: white;
+  text-decoration: none; }
 
 #copyright {
-  margin: 1% 0 1%;
-  font-size: 10pt;
+  font-size: 0.8em;
   color: #cccccc; }
-
-h1 {
-  margin: 0.3em 0 0.3em 0; }
-
-body {
-  font-size: 1em;
-  margin: 0 0 1.5em 0; }
-
-@media screen and (min-width: 650px) {
-  body {
-    font-size: 1.5em; } }
-@media screen and (min-width: 1100px) {
-  body {
-    font-size: 2em; } }
-@media screen and (min-width: 1280px) {
-  body {
-    font-size: 2.3em; } }
-@media screen and (min-width: 1400px) {
-  body {
-    font-size: 2.75em; } }

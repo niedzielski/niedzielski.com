@@ -1,11 +1,12 @@
 {% include top.html %}
 
 <body>
-  {{ <div id='banner'><a href='/'>NIEDZIELSKI</a></div> }}
   <div id='page'>
     {% include header.html %}
 
-    {{ content }}
+    <div id='content'>
+      {{ content }}
+    </div>
 
     {% include footer.html %}
     {% include analytics.html %}
