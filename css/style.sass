@@ -1,44 +1,93 @@
-$blue: #2888fe
+// -----------------------------------------------------------------------------
+// style.sass
+// stephen@niedzielski.com
+
+// -----------------------------------------------------------------------------
+// vars
+
+// screen
+$scr_s  :  600px
+$scr_m  :  800px
+$scr_l  : 1024px
+$scr_xl : 1280px
+$scr_xxl: 1400px
+
 $margin: .75em
-$grey60: #999
-$grey80: #ccc
 
-a:link
-  color: $blue
+// -----------------------------------------------------------------------------
+// elements and classes
 
-a:visited
-  color: $grey60
+p
+  font-size: 1em
+  @media screen and (min-width: $scr_s)
+    font-size: 1.25em
+  @media screen and (min-width: $scr_m)
+    font-size: 1.5em
+  @media screen and (min-width: $scr_l)
+    font-size: 1.75em
+  @media screen and (min-width: $scr_xl)
+    font-size: 2em
+  @media screen and (min-width: $scr_xxl)
+    font-size: 2.25em
 
-a:active, a:hover
+a:hover
   color: magenta
 
-ul
-  list-style: square
+.toc
+  font-size: 1.5em
 
-::selection, ::-moz-selection
-  background: $blue
-  color: white
+.toc_col_lhs
+  margin-right: $margin
+  text-align: right
+  color: silver
+  width: 8em
+  float: left
+
+// -----------------------------------------------------------------------------
+// ids
 
 #page
   margin: 0 auto
 
+  width: 100%
+  @media screen and (min-width: $scr_s)
+    width: $scr_s
+  @media screen and (min-width: $scr_l)
+    width: $scr_m
+
 #content
   margin: $margin
+
+#banner
+  transform: skewX(-18deg)
+  text-align: center
+
+  font-size: 4em
+  @media screen and (min-width: $scr_s)
+    font-size: 5em
+  @media screen and (min-width: $scr_m)
+    font-size: 6em
+  @media screen and (min-width: $scr_l)
+    font-size: 7em
+  @media screen and (min-width: $scr_xl)
+    font-size: 8em
+  @media screen and (min-width: $scr_xxl)
+    font-size: 8.5em
+
+#banner_text
+  display: inline-block
+  transform: skewX(22deg)
+
+#banner a
+  background: magenta
+  text-shadow: 0 0 white, 0 .075em yellow, 0 0 white, 0 -.075em cyan
+  color: white
+  text-decoration: none
+  font-style: italic
 
 #footer
   margin: $margin
 
-#banner,
-#banner a:link,
-#banner a:visited
-  background: $blue
-  //text-shadow: 0 0 #ff0, 0 .055em #ff0, 0 0 #f0f, 0 -.055em #f0f
-  text-shadow: 0 0 white, 0 .055em white, 0 0 white, 0 -.055em white
-  font-size: 2.5em
-  text-align: center
-  color: white
-  text-decoration: none
-
 #copyright
-  font-size: .8em
-  color: $grey80
+  font-size: .5em
+  color: gainsboro
