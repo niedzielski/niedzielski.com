@@ -5315,3 +5315,6 @@ button.close {
   color: white;
   text-decoration: none;
   font-style: italic; }
+
+#banner ::selection {
+  color: black; }

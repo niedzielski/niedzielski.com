@@ -10606,6 +10606,9 @@ button.close {
   text-decoration: none;
   font-style: italic; }
 
+#banner ::selection {
+  color: black; }
+
 a {
   text-decoration: underline;
   color: blue; }
