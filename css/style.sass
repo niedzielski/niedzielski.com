@@ -1,36 +1,18 @@
-// -----------------------------------------------------------------------------
-// style.sass
-// stephen@niedzielski.com
-
-// -----------------------------------------------------------------------------
-// vars
-
-// screen
-$scr-s  :  600px
-$scr-m  :  800px
-$scr-l  : 1024px
-$scr-xl : 1280px
-$scr-xxl: 1400px
-
-// pad
-$pad-m: .75em
-$pad-s: .5em
+@import 'bootstrap/bootstrap.scss'
+@import 'banner.sass'
 
 // -----------------------------------------------------------------------------
 // elements and classes
 
-p
-  font-size: 1em
-  @media screen and (min-width: $scr-s)
-    font-size: 1.25em
-  @media screen and (min-width: $scr-m)
-    font-size: 1.5em
-  @media screen and (min-width: $scr-l)
-    font-size: 1.75em
-  @media screen and (min-width: $scr-xl)
-    font-size: 2em
-  @media screen and (min-width: $scr-xxl)
-    font-size: 2.25em
+a
+  text-decoration: underline
+  color: blue
+
+a:visited
+  color: purple
+
+a:active
+  color: red
 
 a:hover
   color: magenta
@@ -46,14 +28,15 @@ a:hover
 
 .toc
   @extend .tbl
-  font-size: 1.5em
+
+.toc h3
+  margin: $padding-base-vertical
 
 .toc-row
   @extend .tbl-row
 
 .toc-col
   @extend .tbl-col
-  padding: 0 $pad-s 0 $pad-s
 
 .toc-col-cat
   @extend .toc-col
@@ -63,49 +46,15 @@ a:hover
 // -----------------------------------------------------------------------------
 // ids
 
-#page
-  margin: 0 auto
-
-  width: 100%
-  @media screen and (min-width: $scr-s)
-    width: $scr-s
-  @media screen and (min-width: $scr-l)
-    width: $scr-m
-
 #content
-  margin: $pad-m
-
-#banner
-  transform: skewX(-18deg)
-  text-align: center
-  margin-top: .1em
-
-  font-size: 4em
-  @media screen and (min-width: $scr-s)
-    font-size: 5em
-  @media screen and (min-width: $scr-m)
-    font-size: 6em
-  @media screen and (min-width: $scr-l)
-    font-size: 7em
-  @media screen and (min-width: $scr-xl)
-    font-size: 8em
-  @media screen and (min-width: $scr-xxl)
-    font-size: 8.5em
-
-#banner-text
-  display: inline-block
-  transform: skewX(22deg)
-
-#banner a
-  background: magenta
-  text-shadow: 0 0 white, 0 .075em yellow, 0 0 white, 0 -.075em cyan
-  color: white
-  text-decoration: none
-  font-style: italic
+  margin: $padding-base-vertical auto $padding-base-vertical auto
+  max-width: 50em
 
 #footer
-  margin: $pad-m
+  margin: $padding-base-vertical 0 $padding-base-vertical 0
+  position: absolute
+  bottom: 0
 
 #copyright
-  font-size: .7em
+  font-size: .75em
   color: gainsboro

@@ -2,5 +2,5 @@
 # ------------------------------------------------------------------------------
 exec parallel --line-buffer ::: \
   'jekyll serve -tw' \
-  'sass --watch css/style.sass:css/style.css' \
+  'sass --watch css:css' \
   "$@"
