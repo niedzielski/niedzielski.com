@@ -28,7 +28,7 @@ title: NIEDZIELSKI
       <h3>work</h3>
     </div>
     <div class='toc-col'>
-      <h3><a href='niedzielski_resume.pdf'>resume</a>, <a href='http://www.linkedin.com/in/sniedzie'>linkedin</a>, <a href='https://angel.co/niedzielski'>angellist</a></h3>
+      <h3><a href='niedzielski_resume.pdf'>resume</a>, <a href='https://www.linkedin.com/in/sniedzie'>linkedin</a>, <a href='https://angel.co/niedzielski'>angellist</a></h3>
     </div>
   </div>
 

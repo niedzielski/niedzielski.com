@@ -1,1 +1,1 @@
-My website. See it [here](http://niedzielski.com)!
+My website. See it [here](https://niedzielski.com)!
