@@ -1,6 +1,0 @@
-#!/usr/bin/env sh
-# ------------------------------------------------------------------------------
-exec parallel --line-buffer ::: \
-  'jekyll serve -tw' \
-  'sass --watch css:css' \
-  "$@"
