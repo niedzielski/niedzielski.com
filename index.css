@@ -1,0 +1,84 @@
+@import 'polaroid.css';
+
+:root {
+  --spacing: 32px;
+  --polaroid-scale: 0.75;
+  --polaroid-scaled-width: calc(var(--polaroid-width) * var(--polaroid-scale));
+  --polaroid-scaled-height: calc(
+    var(--polaroid-height) * var(--polaroid-scale)
+  );
+}
+
+body {
+  margin: 0;
+  background: #f2f5f5;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+    'Lucida Sans', Arial, sans-serif;
+}
+
+main {
+  box-sizing: border-box;
+  max-width: 768px;
+  padding: var(--spacing);
+  background: #fff;
+  min-height: 100vh;
+  margin: var(--spacing) auto;
+}
+
+@media (min-width: 480px) {
+  body {
+    padding: 0;
+  }
+  main {
+    border-radius: 2px;
+    box-shadow: 0 0 0 1px #0002;
+    min-height: unset;
+  }
+}
+
+a {
+  font-weight: bold;
+}
+
+.nav__list {
+  display: flex;
+  gap: var(--spacing);
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0 var(--spacing);
+}
+.nav__link {
+  font-weight: normal;
+}
+
+.lead:after {
+  /* Add an empty node that clears the left and right so the page summary
+     container can wrap its contents fully even if they're floated. */
+  content: '';
+  clear: both;
+
+  /* Make the node dimensionless. */
+  display: block;
+  width: 0;
+  height: 0;
+
+  /* Forbid scrollbars and hide. */
+  overflow: hidden;
+  visibility: hidden;
+}
+.lead__image {
+  float: left;
+  width: var(--polaroid-scaled-width);
+  height: var(--polaroid-scaled-height);
+  margin: 0 1rem 1rem 0;
+}
+.lead__polaroid {
+  transform: rotate(-1deg) scale(var(--polaroid-scale));
+  margin: calc(
+      -1 * (var(--polaroid-height) - var(--polaroid-scaled-height)) / 2
+    )
+    0 0 calc(-1 * (var(--polaroid-width) - var(--polaroid-scaled-width)) / 2);
+}
+.lead__text {
+  padding-top: 1rem;
+}

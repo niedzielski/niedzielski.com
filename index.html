@@ -4,26 +4,65 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>NIEDZIELSKI</title>
-    <style>
-      body {
-        max-width: 768px;
-        margin: 0 auto;
-        padding: 1rem;
-        font-family: sans-serif;
-      }
-    </style>
     <link rel="icon" href="favicon.png" />
+    <link rel="stylesheet" href="index.css" />
   </head>
   <body>
+    <nav>
+      <ul class="nav__list">
+        <li>
+          <a class="nav__link" href="https://niedzielski.com">NIEDZIELSKI</a>
+        </li>
+        <li>
+          <a class="nav__link" href="https://git.io/stephen">GitHub</a>
+        </li>
+        <li>
+          <a class="nav__link" href="https://twitter.com/niedzielski"
+            >Twitter</a
+          >
+        </li>
+        <li>
+          <a class="nav__link" href="https://www.linkedin.com/in/sniedzie"
+            >LinkedIn</a
+          >
+        </li>
+        <li>
+          <a class="nav__link" href="mailto:stephen@niedzielski.com">Email</a>
+        </li>
+      </ul>
+    </nav>
+
     <main>
-      <section>
-        <p>
-          Hello, I'm Stephen. I'm on
-          <a href="mailto:stephen@niedzielski.com">email</a>,
-          <a href="https://twitter.com/niedzielski">Twitter</a>,
-          <a href="https://git.io/stephen">GitHub</a>, and
-          <a href="https://www.linkedin.com/in/sniedzie">LinkedIn</a>.
-        </p>
+      <section class="lead">
+        <div class="lead__image">
+          <div class="lead__polaroid polaroid">
+            <div class="polaroid__image-container">
+              <img
+                class="polaroid__image"
+                src="me.jpg"
+                alt="Portrait of Stephen Niedzielski"
+              />
+              <div class="polaroid__image-overlay"></div>
+            </div>
+            <div class="polaroid__caption-container">
+              <div class="polaroid__caption">Stephen</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="lead__text">
+          <p>
+            Hello, I'm Stephen Niedzielski. Welcome to my so-called website.
+          </p>
+          <p>
+            You may view my open-source portfolio on
+            <a href="https://git.io/stephen">GitHub</a>, read my masterworks on
+            <a href="https://twitter.com/niedzielski">Twitter</a>, see my career
+            thus far on
+            <a href="https://www.linkedin.com/in/sniedzie">LinkedIn</a>, or
+            correspond via <a href="mailto:stephen@niedzielski.com">email</a>.
+          </p>
+        </div>
       </section>
       <section>
         <p>
@@ -102,6 +141,14 @@
             is just to invoke the second with arguments.
           </li>
         </ul>
+      </section>
+      <section>
+        <p>
+          In the past, I've worked for Nintendo Technology Development,
+          Qualcomm, Samsung, Newisys, VendScreen, and MapQuest. I am a DigiPen
+          alum.
+        </p>
+        <p>So there you have it.</p>
       </section>
     </main>
   </body>
