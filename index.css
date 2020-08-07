@@ -2,7 +2,7 @@
 
 :root {
   --spacing: 32px;
-  --polaroid-scale: 0.75;
+  --polaroid-scale: 0.5;
   --polaroid-scaled-width: calc(var(--polaroid-width) * var(--polaroid-scale));
   --polaroid-scaled-height: calc(
     var(--polaroid-height) * var(--polaroid-scale)
@@ -26,6 +26,9 @@ main {
 }
 
 @media (min-width: 480px) {
+  :root {
+    --polaroid-scale: 0.75;
+  }
   body {
     padding: 0;
   }
