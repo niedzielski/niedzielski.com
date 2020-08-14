@@ -76,7 +76,7 @@
   display: inline-block;
   vertical-align: middle;
   /* Marker-like. */
-  font: small-caps 0.9cm cursive;
+  font: small-caps bold 0.9cm cursive;
   color: var(--color);
   /* Extra faux-bold. */
   text-shadow: 1px 1px 0 var(--color);
