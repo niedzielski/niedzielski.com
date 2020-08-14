@@ -74,6 +74,8 @@ a {
     )
     0 0 calc(-1 * (var(--polaroid-width) - var(--polaroid-scaled-width)) / 2);
 }
-.lead__text {
-  padding-top: 1rem;
+@media (min-width: 480px) {
+  .lead__text {
+    padding-top: 1rem;
+  }
 }
