@@ -5,6 +5,7 @@
   --polaroid-scaled-height: calc(
     var(--polaroid-height) * var(--polaroid-scale)
   );
+  --content-max-width: 768px;
 }
 
 @media (min-width: 480px) {
@@ -22,12 +23,18 @@ body {
 
 main {
   box-sizing: border-box;
-  max-width: 768px;
+  max-width: var(--content-max-width);
   padding: var(--spacing);
   background: #fff;
   margin: 0 auto var(--spacing) auto;
   border-radius: 2px;
   box-shadow: 0 0 0 1px #0002;
+}
+
+footer {
+  max-width: var(--content-max-width);
+  margin: 0 auto var(--spacing) auto;
+  font-size: x-small;
 }
 
 a {
