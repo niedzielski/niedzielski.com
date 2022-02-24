@@ -1,0 +1,11 @@
+{
+  // https://deno.land/manual@main/typescript/configuration
+  "compilerOptions": {
+    // "exactOptionalPropertyTypes": true,
+    "importsNotUsedAsValues": "error",
+    "noImplicitOverride": true,
+    // "noUncheckedIndexedAccess": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true
+  }
+}

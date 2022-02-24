@@ -1,0 +1,99 @@
+<!doctype html><html lang="en" data-reactroot=""><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><meta name="keywords" content="dev,sitemaps,APIs"/><meta name="theme-color" content="#f2f5f5"/><meta name="creator" content="Stephen Niedzielski"/><link rel="canonical" href="https://niedzielski.com/notes/website-structures-and-apis"/><meta http-equiv="Content-Security-Policy" content="default-src &#x27;none&#x27;; img-src &#x27;self&#x27; data:; script-src &#x27;unsafe-inline&#x27;; style-src &#x27;self&#x27;; connect-src &#x27;self&#x27;"/><title>Website structures and APIs - NIEDZIELSKI</title><link rel="stylesheet" href="/index.css"/><link rel="icon" href="/favicon.png?v=0.0.0"/></head><body><header><nav><ul class="nav__list"><li class="nav__link-item"><a class="nav__link" href="/"><img class="logo" src="/logo.png" width="160" height="24" alt="NIEDZIELSKI"/></a></li><li class="nav__link-item"><a class="nav__link" href="/works">Works</a></li><li class="nav__link-item"><a class="nav__link" href="/notes">Notes</a></li><li class="nav__link-item"><a class="nav__link" href="/log">Log</a></li><li class="nav__link-item"><a class="nav__link" href="/stephen">Profile</a></li></ul></nav></header><div class="page"><main><h1 class="heading heading--1" id="title"><a class="heading__fragment" href="#title">#</a>Website structures and APIs</h1><div><p>A survey of website structures and APIs.</p>
+<h2 class="heading heading--2" id="twitter" data-reactroot=""><a class="heading__fragment" href="#twitter">#</a>Twitter</h2><h3 class="heading heading--3" id="routes" data-reactroot=""><a class="heading__fragment" href="#routes">#</a>Routes</h3><ul>
+<li><strong><code>https://twitter.com</code></strong><ul>
+<li><strong><code>/</code></strong>: login / account creation landing page.</li>
+<li><strong><code>/home</code></strong>: primary feed for the logged-in user.</li>
+<li><strong><code>/explore</code></strong>: alternative feed for the logged-in/out user.<ul>
+<li><strong><code>/explore/tabs/:tabID</code></strong>: explore tab feed for the logged-in/out user.</li>
+</ul>
+</li>
+<li><strong><code>/notifications</code></strong>: notifications inbox for the logged-in user.</li>
+<li><strong><code>/messages</code></strong>: messages inbox for the logged-in user.</li>
+<li><strong><code>/search?q=:query</code></strong>: tweet search results for the logged-in user. This is
+frequently used for searching on tags like <code>#foo</code>.</li>
+<li><strong><code>/settings</code></strong>: configuration for the logged-in/out user.<ul>
+<li><strong><code>/settings/about</code></strong>: Settings → General → Additional resources.</li>
+<li><strong><code>/settings/account/personalization</code></strong>: Settings → Privacy →
+Personalization and data.</li>
+<li><strong><code>/settings/your_twitter_data</code></strong>: Settings → Privacy → Your Twitter data.</li>
+<li><strong><code>/settings/profile</code></strong>: configuration for the logged-in user&#39;s profile
+(name, bio, location, etc).</li>
+<li><strong>…</strong>: Many more subpaths for the logged-in user.</li>
+</ul>
+</li>
+<li><strong><code>/i/flow</code></strong>: workflow modal dialogs.<ul>
+<li><strong><code>/i/flow/login</code></strong>: login workflow.</li>
+<li><strong><code>/i/flow/password_reset</code></strong>: password reset workflow.</li>
+<li><strong><code>/i/flow/convert_to_professional</code></strong>: professional account sign-up
+workflow.</li>
+</ul>
+</li>
+<li><strong><code>/:username</code></strong>: public profile and feed for a user (tweets may be
+private).<ul>
+<li><strong><code>/:username/status/:id</code></strong>: a public/private tweet.</li>
+<li><strong><code>/:username/status/:id/photo/:index</code></strong>: a tweet&#39;s photo carousel index.</li>
+<li><strong><code>/:username/lists</code></strong>: public/private lists for a user.</li>
+<li><strong><code>/:username/topics</code></strong>: topics for a user.</li>
+</ul>
+</li>
+<li><strong><code>/i/lists/:listID</code></strong>: public/private list.</li>
+<li><strong><code>/i/release_notes</code></strong>: changelog.</li>
+</ul>
+</li>
+</ul>
+<h3 class="heading heading--3" id="content-delivery-networks-cdns-" data-reactroot=""><a class="heading__fragment" href="#content-delivery-networks-cdns-">#</a>Content delivery networks (CDNs)</h3><ul>
+<li><strong><code>https://pbs.twimg.com</code></strong><ul>
+<li><strong><code>/media/:id?format=:format&amp;name=:size</code></strong>: CDN for different formats like
+<code>jpg</code> and sizes like <code>large</code>.</li>
+<li><strong><code>/profile_banners/:userID/:contentID/:widthx:height</code></strong>: user profile
+banners.</li>
+<li><strong><code>/profile_images/:id/_:anotherID_:widthx:height.:format</code></strong>: user profile
+images.</li>
+</ul>
+</li>
+<li><strong><code>https://abs.twimg.com</code></strong>: non-user content resources.<ul>
+<li><strong><code>/favicons/:filename</code></strong>: Favicons.</li>
+<li><strong><code>/:filename</code></strong>: JavaScripts, manifest, and other files.</li>
+<li><strong><code>/fonts/v2/:filename</code></strong>: Web fonts.</li>
+</ul>
+</li>
+<li><strong><code>https://ads-api.twitter.com</code></strong></li>
+</ul>
+<h3 class="heading heading--3" id="apis" data-reactroot=""><a class="heading__fragment" href="#apis">#</a>APIs</h3><ul>
+<li><strong><code>https://twitter.com</code></strong><ul>
+<li><strong><code>/i/api</code></strong><ul>
+<li><strong><code>/1.1/account/settings.json</code></strong></li>
+<li><strong><code>/graphql/?/UserTweets</code></strong></li>
+<li><strong><code>/2/notifications/all.json</code></strong></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong><code>https://api.twitter.com</code></strong><ul>
+<li><strong><code>/1.1/jot/client_event.json</code></strong></li>
+</ul>
+</li>
+</ul>
+<h3 class="heading heading--3" id="notes" data-reactroot=""><a class="heading__fragment" href="#notes">#</a>Notes</h3><ul>
+<li>The settings UI hierarchy does not correspond to the URL. For example, 1)
+Settings → 2) Privacy → 3) Your Twitter data → 4) Account → 5) Gender is
+<code>/settings/your_twitter_data/gender</code> and the sibling 5) Age tab is
+<code>/settings/your_twitter_data/age</code>. External links that would open a new tab
+are clearly marked (eg, see Legal links under <code>/settings/about</code>).</li>
+<li>Tweets can appear in many UI contexts. Eg, both <code>/home</code> and
+<code>/explore/tabs/:tabID</code> have links to <code>/:username/status/:id</code> (ie, the URL
+hierarchy doesn&#39;t nest under <code>/home</code> and <code>/explore</code>, respectively). It makes
+sense both from a user interface / URL perspective to point to one location as
+every tweet is globally unique and associated with exactly one user.</li>
+<li>Tweets are accessed by ID. This is nicely terse and avoids collisions.
+However, given that tweets are so short, their entire text contents would fit
+within URL limits like <code>/niedzielski/status/hello-world</code>. It would be
+interesting to experiment with this. What do you on collision,
+<code>/niedzielski/status/hello-world-2</code>? What about when a tweet is empty and just
+photos? Are named tweets more usable in practice or just cumbersome to share?
+Eg, <code>https://twitter.com/niedzielski/status/1347422718929502210</code> vs
+<code>https://twitter.com/niedzielski/status/exploring-a-new-art-style-for-natureelsewhere.-higher-resolution.-no-more-backpacker.-wip-sketch-screenshotsaturday-indiegamedev-httpnatureelsewhere.com</code>.
+Compare to Stack Overflow.</li>
+<li>The <code>https://twitter.com/i/api</code> endpoints support many query parameters.</li>
+</ul>
+</div></main><footer><small class="footer__text">© Stephen Niedzielski. This page was published on<!-- --> <time dateTime="2022-02-23">2022-02-23</time> <!-- -->and modified<!-- --> <time dateTime="2022-02-23">2022-02-23</time>.</small></footer></div><script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","author":{"@type":"Person","name":"Stephen Niedzielski","url":"https://niedzielski.com"},"dateModified":"2022-02-23","datePublished":"2022-02-23","headline":"A survey of website structures and APIs.","name":"Website structures and APIs","url":"https://niedzielski.com/notes/website-structures-and-apis","publisher":{"@type":"Organization","logo":"https://oidoid.com/oidoid.png","name":"oidoid","url":"https://oidoid.com"}}</script></body></html>

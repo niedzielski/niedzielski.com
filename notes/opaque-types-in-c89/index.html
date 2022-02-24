@@ -1,0 +1,141 @@
+<!doctype html><html lang="en" data-reactroot=""><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><meta name="keywords" content="dev,C89,C"/><meta name="theme-color" content="#f2f5f5"/><meta name="creator" content="Stephen Niedzielski"/><link rel="canonical" href="https://niedzielski.com/notes/opaque-types-in-c89"/><meta http-equiv="Content-Security-Policy" content="default-src &#x27;none&#x27;; img-src &#x27;self&#x27; data:; script-src &#x27;unsafe-inline&#x27;; style-src &#x27;self&#x27;; connect-src &#x27;self&#x27;"/><title>Opaque types in C89 - NIEDZIELSKI</title><link rel="stylesheet" href="/index.css"/><link rel="icon" href="/favicon.png?v=0.0.0"/></head><body><header><nav><ul class="nav__list"><li class="nav__link-item"><a class="nav__link" href="/"><img class="logo" src="/logo.png" width="160" height="24" alt="NIEDZIELSKI"/></a></li><li class="nav__link-item"><a class="nav__link" href="/works">Works</a></li><li class="nav__link-item"><a class="nav__link" href="/notes">Notes</a></li><li class="nav__link-item"><a class="nav__link" href="/log">Log</a></li><li class="nav__link-item"><a class="nav__link" href="/stephen">Profile</a></li></ul></nav></header><div class="page"><main><h1 class="heading heading--1" id="title"><a class="heading__fragment" href="#title">#</a>Opaque types in C89</h1><div><p><em>This article was written around 2010. It is likely incorrect and I&#39;m unlikely
+to revise it significantly.</em></p>
+<p>An opaque type is a user data type, normally a struct, that presents no public
+member variable interface.</p>
+<p>The following examples were compiled with <code>gcc -std=c89 -Wall</code>:</p>
+<pre><code class="language-c">/* opaque.h */
+#ifndef __OPAQUE_H__
+#define __OPAQUE_H__
+
+struct opaque_type;
+typedef struct opaque_type opaque_type;
+extern const unsigned sizeof_opaque;
+
+void opaque_init(opaque_type * o, unsigned data);
+unsigned opaque_data(const opaque_type * o);
+
+#endif
+</code></pre>
+<p>There&#39;s no implementation in the above header, only declarations. Clients are
+unaware of implementation, their only interface is provided by the function
+prototypes.</p>
+<pre><code class="language-c">/* opaque.c */
+#include &quot;opaque.h&quot;
+
+struct opaque_type
+{
+  unsigned data;
+};
+
+const unsigned sizeof_opaque = sizeof(opaque_type);
+
+void opaque_init(opaque_type * o, unsigned data)
+{
+  o-&gt;data = data;
+}
+
+unsigned opaque_data(const opaque_type * o)
+{
+  return o-&gt;data;
+}
+</code></pre>
+<p>The above source contains the implementation for the opaque type. This
+implementation has file scope and is unknown at compile time to all other files
+in the build.</p>
+<pre><code class="language-c">/* main.c */
+#include &lt;stdio.h&gt;
+#include &quot;opaque.h&quot;
+
+/* not permitted: variable sized type outside function.
+unsigned char mem[sizeof_opaque];
+*/
+
+opaque_type * o;
+
+int main()
+{
+  /* not permitted: size unknown.
+  opaque_type o;
+  */
+  unsigned char mem[sizeof_opaque];
+
+  o = (opaque_type *)mem;
+
+  opaque_init(o, 10);
+  printf(&quot;%u\n&quot;, opaque_data(o));
+
+  return 0;
+}
+</code></pre>
+<p>The above source shows how a client may interface with the opaque type.</p>
+<p>Now that we see how most implementations may be written, let&#39;s look at a simpler
+case. Here&#39;s what it would like if we stuffed it all in main.c:</p>
+<pre><code class="language-c">/* main.c */
+#include &lt;stdio.h&gt;
+
+/* forward declarations. */
+struct opaque_type;
+typedef struct opaque_type opaque_type;
+extern const unsigned sizeof_opaque;
+
+void opaque_init(opaque_type * o, unsigned data);
+unsigned opaque_data(const opaque_type * o);
+
+/* client code. */
+
+/* not permitted: variable sized type outside function.
+unsigned char mem[sizeof_opaque];
+*/
+
+opaque_type * o;
+
+int main()
+{
+  /* not permitted: size unknown.
+  opaque_type o;
+  */
+  unsigned char mem[sizeof_opaque];
+
+  o = (opaque_type *)mem;
+
+  opaque_init(o, 10);
+  printf(&quot;%u\n&quot;, opaque_data(o));
+
+  return 0;
+}
+
+/* opaque implementation. */
+
+struct opaque_type
+{
+  unsigned data;
+};
+
+const unsigned sizeof_opaque = sizeof(opaque_type);
+
+void opaque_init(opaque_type * o, unsigned data)
+{
+  o-&gt;data = data;
+}
+
+unsigned opaque_data(const opaque_type * o)
+{
+  return o-&gt;data;
+}
+</code></pre>
+<p>The example demonstrates that it is impractical to allocate opaque types at
+compile time. Since the <code>opaque_type</code> implementation is unknown in main, the
+compiler cannot instantiate an object of this type. Hacking around this problem
+by making an <code>opaque_type *</code> and assigning statically allocated memory works,
+but you can only make the allocation in function scope. In systems permitting
+dynamic allocation, this may not be an issue. Even an <code>opaque_ctor()</code> function
+could be defined.</p>
+<p>This case also shows there&#39;s no partial public / private interfaces possible.
+It&#39;s all public or all opaque. Consequently, this means that every member
+variable to be exposed must have an associated getter and setter function. This
+may cause poor code optimization in our multiple file example since the
+implementation will be unknown at compile time and the compiler will be unable
+to eliminate the overhead of a function call. The exception here is if the
+compiler generates intermediate code in the object files to allow for
+optimizations in the linking step.</p>
+</div></main><footer><small class="footer__text">© Stephen Niedzielski. This page was published on<!-- --> <time dateTime="2022-02-23">2010-03-13</time> <!-- -->and modified<!-- --> <time dateTime="2022-02-23">2022-02-23</time>.</small></footer></div><script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","author":{"@type":"Person","name":"Stephen Niedzielski","url":"https://niedzielski.com"},"dateModified":"2022-02-23","datePublished":"2010-03-13","headline":"Exploring the tradeoffs of opaque types in C.","name":"Opaque types in C89","url":"https://niedzielski.com/notes/opaque-types-in-c89","publisher":{"@type":"Organization","logo":"https://oidoid.com/oidoid.png","name":"oidoid","url":"https://oidoid.com"}}</script></body></html>

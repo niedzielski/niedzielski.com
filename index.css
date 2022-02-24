@@ -1,5 +1,9 @@
 :root {
-  --spacing: 32px;
+  /* #theme */
+  --color-background: #f2f5f5;
+  --color-paper: #fff;
+  --space: 32px;
+  --half-space: calc(var(--space) / 2);
   --polaroid-scale: 0.5;
   --polaroid-scaled-width: calc(var(--polaroid-width) * var(--polaroid-scale));
   --polaroid-scaled-height: calc(
@@ -13,28 +17,70 @@
     --polaroid-scale: 0.75;
   }
 }
+@media (min-width: 768px) {
+  :root {
+    --polaroid-scale: 1;
+  }
+}
 
 body {
   margin: 0;
-  background: #f2f5f5;
+  background: var(--color-background);
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
     'Lucida Sans', Arial, sans-serif;
+
+  /* Always show the scrollbar to prevent layout shift when changing pages. */
+  overflow-y: scroll;
+}
+
+h1 {
+  margin-block-start: 0;
+}
+
+pre {
+  background-color: #fffff6;
+  padding: 1rem;
+}
+
+.heading__fragment {
+  float: left;
+  padding-right: 20px;
+  margin-left: -20px;
+  color: #0000;
+  text-decoration: none;
+  width: 0;
+  display: block;
+}
+
+.heading__fragment:hover {
+  color: #ddd;
+}
+
+.page {
+  max-width: var(--content-max-width);
+  margin: 0 auto var(--space) auto;
 }
 
 main {
   box-sizing: border-box;
-  max-width: var(--content-max-width);
-  padding: var(--spacing);
-  background: #fff;
-  margin: 0 auto var(--spacing) auto;
-  border-radius: 2px;
+  padding: var(--space);
+  background: var(--color-paper);
   box-shadow: 0 0 0 1px #0002;
+  border-radius: 2px;
 }
 
 footer {
-  max-width: var(--content-max-width);
-  margin: 0 auto var(--spacing) auto;
-  font-size: x-small;
+  padding-block-start: var(--half-space);
+  padding-block-end: var(--half-space);
+  padding-inline-start: var(--half-space);
+  padding-inline-end: var(--half-space);
+}
+
+.footer__text {
+  /* Left-align. */
+  display: block;
+  width: 100%;
+  font-size: xx-small;
 }
 
 a {
@@ -45,38 +91,37 @@ a {
   display: block;
 }
 
+header {
+  padding: var(--half-space);
+}
+
 .nav__list {
   margin: 0;
-  padding: calc(var(--spacing) / 2);
   display: flex;
-  gap: calc(var(--spacing) / 2);
+  gap: var(--half-space);
   flex-wrap: wrap;
   list-style: none;
+  padding: 0;
+}
+.nav__link-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .nav__link {
   font-weight: normal;
+  /* Center vertically. */
+  display: block;
 }
 
-.lead:after {
-  /* Add an empty node that clears the left and right so the page summary
-     container can wrap its contents fully even if they're floated. */
-  content: '';
-  clear: both;
-
-  /* Make the node dimensionless. */
-  display: block;
-  width: 0;
-  height: 0;
-
-  /* Forbid scrollbars and hide. */
-  overflow: hidden;
-  visibility: hidden;
+.lead {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: var(--half-space);
 }
 .lead__image {
-  float: left;
   width: var(--polaroid-scaled-width);
   height: var(--polaroid-scaled-height);
-  margin: 0 1rem 1rem 0;
 }
 .lead__polaroid {
   transform: rotate(-1deg) scale(var(--polaroid-scale));
@@ -85,8 +130,8 @@ a {
     )
     0 0 calc(-1 * (var(--polaroid-width) - var(--polaroid-scaled-width)) / 2);
 }
-@media (min-width: 480px) {
-  .lead__text {
-    padding-top: 1rem;
-  }
+.lead__text {
+  min-width: 192px;
+  flex: 1;
+  padding-block-start: var(--half-space);
 }

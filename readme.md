@@ -1,4 +1,6 @@
-My website. See it [here](https://niedzielski.com)!
+# niedzielski.com
+
+[My website](https://niedzielski.com).
 
 ## License
 
