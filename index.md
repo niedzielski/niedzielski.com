@@ -21,7 +21,7 @@ title: null
         <div class="polaroid__image-overlay"></div>
       </div>
       <div class="polaroid__caption-container">
-        <div class="polaroid__caption">Stephen</div>
+        <div class="polaroid__caption"><img src="/signature.png" alt="Stephen" height=38 width=128></div>
       </div>
     </div>
   </div>

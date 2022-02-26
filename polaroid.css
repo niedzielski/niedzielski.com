@@ -72,11 +72,16 @@
 }
 
 .polaroid__caption {
+  padding: 5mm;
   --color: #333;
   display: inline-block;
   vertical-align: middle;
   /* Marker-like. */
-  font: small-caps bold 0.9cm cursive;
+  font-weight: bold;
+  font-size: 0.9cm;
+  font-variant: small-caps;
+  font-family: 'Comic Sans', 'Comic Sans MS', 'Lucida Handwriting', 'Chalkboard',
+    'Brush Script MT', cursive, sans-serif;
   color: var(--color);
   /* Extra faux-bold. */
   text-shadow: 1px 1px 0 var(--color);
