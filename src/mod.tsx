@@ -1,4 +1,4 @@
-#!/usr/bin/env -S deno run --allow-read --allow-write --import-map=imports.jsonc --quiet
+#!/usr/bin/env -S deno run --allow-read --allow-write --import-map=mods.jsonc --quiet
 import {_createWalkEntry, expandGlob, WalkEntry} from 'fs'
 import {ArticleEl, IndexEl} from '@/el/TemplateEl.tsx'
 import {compareDates} from '@/types/Date.ts'
