@@ -16,7 +16,7 @@ title: null
         <img
           alt="Portrait of Stephen Niedzielski"
           class="polaroid__image"
-          src="stephen.jpg"
+          src="stephen.jpeg"
         >
         <div class="polaroid__image-overlay"></div>
       </div>
