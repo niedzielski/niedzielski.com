@@ -91,3 +91,14 @@ A survey of website structures and APIs.
   `https://twitter.com/niedzielski/status/exploring-a-new-art-style-for-natureelsewhere.-higher-resolution.-no-more-backpacker.-wip-sketch-screenshotsaturday-indiegamedev-httpnatureelsewhere.com`.
   Compare to Stack Overflow.
 - The `https://twitter.com/i/api` endpoints support many query parameters.
+
+## YouTube
+
+### Routes
+
+- **`https://youtube.com`**
+  - **`/feed`**:
+    - **`/feed/explore`**:
+    - **`/feed/library`**:
+    - **`/feed/subscriptions`**:
+  - **`/watch?v=:videoID`**:
