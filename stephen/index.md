@@ -1,22 +1,24 @@
 ---
-dateModified: '2022-02-23'
+dateModified: '2022-06-19'
 datePublished: '2022-02-23'
 keywords: ['Stephen Niedzielski', 'niedzielski']
 headline: "Stephen Niedzielski's profile."
-image: 'https://niedzielski.com/stephen.png'
+image: 'https://niedzielski.com/stephen.jpeg'
 title: 'Profile'
 ---
 
-I'm Stephen Niedzielski. I live in the city of Denver, Colorado, in the United
-States with my partner, J., and our cat, Fritz. My pronouns are he/him.
+I'm Stephen Niedzielski. I live in the city of Denver, Colorado, United States
+with my partner, J., and our cat, Fritz. My pronouns are he/him.
+
+I publish select works under [oidoid](https://oidoid.com).
 
 My email address is [stephen@niedzielski.com](mailto:stephen@niedzielski.com).
 
-See [my resume (PDF)](stephen-niedzielski-resume.pdf).
+I work at Reddit. See [my resume (PDF)](stephen-niedzielski-resume.pdf).
 
-## Identities elsewhere
+## Elsewhere
 
-- [GitHub](https://git.io/stephen) (most of my code is available here)
+- [GitHub](https://git.io/stephen) (most of my personal code is available here)
 - [Twitter](https://twitter.com/niedzielski)
 - [Read.cv](https://read.cv/sn)
 - [LinkedIn](https://linkedin.com/in/sniedzie)
