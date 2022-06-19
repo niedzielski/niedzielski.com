@@ -6,20 +6,20 @@ headline: 'Where I donate.'
 title: 'Donations'
 ---
 
-I donate to the following:
+I contribute to:
 
-| Where                                                       | Contribution                                                                | Since      |
-| :---------------------------------------------------------- | :-------------------------------------------------------------------------- | :--------- |
-| [Android Arts](https://www.androidarts.com)                 | [$3 / month](https://www.patreon.com/androidarts)                           | 2021-10-09 |
-| [Bottles](https://usebottles.com)                           | [$24 / year](https://usebottles.com/funding)                                | 2022-02-21 |
-| [Debian](https://www.debian.org)                            | [$3 / month](https://www.debian.org/donations#spi)                          | 2022-01-09 |
-| [Electronic Frontier Foundation (EFF)](https://www.eff.org) | [$100.00 / year](https://supporters.eff.org/donate/join-eff-m--h)           | 2022-04-30 |
-| [GNOME Foundation](https://www.gnome.org)                   | [$3 / month](https://www.gnome.org/donate)                                  | 2022-01-09 |
-| [LineageOS](https://lineageos.org)                          | [$2 / month](https://www.patreon.com/LineageOS)                             | 2022-05-01 |
-| [shmuplations.com](https://shmuplations.com)                | [$2 / month if a translation is made](https://www.patreon.com/shmuplations) | 2021-10-09 |
-| [Standard Ebooks](https://standardebooks.org/)              | [$2 / month](https://fundraising.fracturedatlas.org/standard-ebooks)        | 2021-12-04 |
-| [The Linux Foundation](https://www.linuxfoundation.org)     | [$3 / month](https://www.linuxfoundation.org/donate)                        | 2022-01-09 |
-| [Wine](https://www.winehq.org)                              | [$2 / month](https://www.winehq.org/donate)                                 | 2021-01-22 |
+| Where                                                       | Contribution                                                         | Since      |
+| :---------------------------------------------------------- | :------------------------------------------------------------------- | :--------- |
+| [Android Arts](https://www.androidarts.com)                 | [$3 / month](https://www.patreon.com/androidarts)                    | 2021-10-09 |
+| [Bottles](https://usebottles.com)                           | [$24 / year](https://usebottles.com/funding)                         | 2022-02-21 |
+| [Debian](https://www.debian.org)                            | [$3 / month](https://www.debian.org/donations#spi)                   | 2022-01-09 |
+| [Electronic Frontier Foundation (EFF)](https://www.eff.org) | [$100 / year](https://supporters.eff.org/donate/join-eff-m--h)       | 2022-04-30 |
+| [GNOME Foundation](https://www.gnome.org)                   | [$3 / month](https://www.gnome.org/donate)                           | 2022-01-09 |
+| [LineageOS](https://lineageos.org)                          | [$2 / month](https://www.patreon.com/LineageOS)                      | 2022-05-01 |
+| [shmuplations.com](https://shmuplations.com)                | [$2 / month](https://www.patreon.com/shmuplations)                   | 2021-10-09 |
+| [Standard Ebooks](https://standardebooks.org)               | [$2 / month](https://fundraising.fracturedatlas.org/standard-ebooks) | 2021-12-04 |
+| [The Linux Foundation](https://www.linuxfoundation.org)     | [$3 / month](https://www.linuxfoundation.org/donate)                 | 2022-01-09 |
+| [Wine](https://www.winehq.org)                              | [$2 / month](https://www.winehq.org/donate)                          | 2021-01-22 |
 
 In the past, I've donated to
 [The Wikimedia Foundation](https://wikimediafoundation.org),
@@ -28,8 +28,8 @@ elsewhere.
 
 ## Why mention it?
 
-It's often safer to keep your thoughts to yourself. I disclose my donations for
-a few reasons:
+It's often safer to keep your thoughts to yourself. I share my donations for a
+few reasons:
 
 - If I think a project is worth supporting, I think it's worth sharing.
 - The default for most works is "never donate." For both myself and others, I
