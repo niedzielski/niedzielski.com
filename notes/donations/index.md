@@ -8,22 +8,22 @@ title: 'Donations'
 
 I contribute to:
 
-| Where                                                       | Contribution                                                         | Since      |
-| :---------------------------------------------------------- | :------------------------------------------------------------------- | :--------- |
-| [Android Arts](https://www.androidarts.com)                 | [$3 / month](https://www.patreon.com/androidarts)                    | 2021-10-09 |
-| [Bottles](https://usebottles.com)                           | [$24 / year](https://usebottles.com/funding)                         | 2022-02-21 |
-| [Debian](https://www.debian.org)                            | [$3 / month](https://www.debian.org/donations#spi)                   | 2022-01-09 |
-| [Electronic Frontier Foundation (EFF)](https://www.eff.org) | [$100 / year](https://supporters.eff.org/donate/join-eff-m--h)       | 2022-04-30 |
-| [GNOME Foundation](https://www.gnome.org)                   | [$3 / month](https://www.gnome.org/donate)                           | 2022-01-09 |
-| [LineageOS](https://lineageos.org)                          | [$2 / month](https://www.patreon.com/LineageOS)                      | 2022-05-01 |
-| [shmuplations.com](https://shmuplations.com)                | [$2 / month](https://www.patreon.com/shmuplations)                   | 2021-10-09 |
-| [Standard Ebooks](https://standardebooks.org)               | [$2 / month](https://fundraising.fracturedatlas.org/standard-ebooks) | 2021-12-04 |
-| [The Linux Foundation](https://www.linuxfoundation.org)     | [$3 / month](https://www.linuxfoundation.org/donate)                 | 2022-01-09 |
-| [Wine](https://www.winehq.org)                              | [$2 / month](https://www.winehq.org/donate)                          | 2021-01-22 |
+| Where                                                   | Contribution                                                         | Since      |
+| :------------------------------------------------------ | :------------------------------------------------------------------- | :--------- |
+| [Android Arts](https://androidarts.com)                 | [$3 / month](https://patreon.com/androidarts)                        | 2021-10-09 |
+| [Bottles](https://usebottles.com)                       | [$24 / year](https://usebottles.com/funding)                         | 2022-02-21 |
+| [Debian](https://debian.org)                            | [$3 / month](https://debian.org/donations#spi)                       | 2022-01-09 |
+| [Electronic Frontier Foundation (EFF)](https://eff.org) | [$100 / year](https://supporters.eff.org/donate/join-eff-m--h)       | 2022-04-30 |
+| [GNOME Foundation](https://gnome.org)                   | [$3 / month](https://gnome.org/donate)                               | 2022-01-09 |
+| [LineageOS](https://lineageos.org)                      | [$2 / month](https://patreon.com/LineageOS)                          | 2022-05-01 |
+| [shmuplations](https://shmuplations.com)                | [$2 / month](https://patreon.com/shmuplations)                       | 2021-10-09 |
+| [Standard Ebooks](https://standardebooks.org)           | [$2 / month](https://fundraising.fracturedatlas.org/standard-ebooks) | 2021-12-04 |
+| [The Linux Foundation](https://linuxfoundation.org)     | [$3 / month](https://linuxfoundation.org/donate)                     | 2022-01-09 |
+| [Wine](https://winehq.org)                              | [$2 / month](https://winehq.org/donate)                              | 2021-01-22 |
 
 In the past, I've donated to
 [The Wikimedia Foundation](https://wikimediafoundation.org),
-[Linux Mint](https://linuxmint.com), [Tiled](https://www.mapeditor.org), and
+[Linux Mint](https://linuxmint.com), [Tiled](https://mapeditor.org), and
 elsewhere.
 
 ## Why mention it?
