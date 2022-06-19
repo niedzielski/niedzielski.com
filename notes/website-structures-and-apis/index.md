@@ -1,5 +1,5 @@
 ---
-dateModified: '2022-02-23'
+dateModified: '2022-06-19'
 datePublished: '2022-02-23'
 keywords: ['dev', 'sitemaps', 'APIs']
 headline: 'A survey of website structures and APIs.'
@@ -19,6 +19,7 @@ A survey of website structures and APIs.
     - **`/explore/tabs/:tabID`**: explore tab feed for the logged-in/out user.
   - **`/notifications`**: notifications inbox for the logged-in user.
   - **`/messages`**: messages inbox for the logged-in user.
+    - **`/messages/:id`**: message thread.
   - **`/search?q=:query`**: tweet search results for the logged-in user. This is
     frequently used for searching on tags like `#foo`.
   - **`/settings`**: configuration for the logged-in/out user.
