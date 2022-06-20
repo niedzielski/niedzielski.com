@@ -6,8 +6,6 @@ headline: 'A survey of website structures and APIs.'
 title: 'Website structures and APIs'
 ---
 
-A survey of website structures and APIs.
-
 ## Twitter
 
 ### Routes

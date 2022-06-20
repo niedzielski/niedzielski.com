@@ -140,3 +140,8 @@ header {
   flex: 1;
   padding-block-start: var(--half-space);
 }
+
+h1 + .subtitle {
+  display: block;
+  margin-top: -1rem;
+}

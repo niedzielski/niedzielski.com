@@ -10,12 +10,26 @@ export function ArticleEl({article}: TemplateProps): React.ReactElement {
   switch (article.type) {
     case 'Homepage':
       return <HomepageEl article={article} />
-    default:
+    case 'Index':
+    case 'Profile':
+    case 'Work':
       if (article.meta.title == null)
         throw Error(`"${article.url}" metadata title expected to be string.`)
       return (
         <TemplateEl article={article}>
           <HeadingEl id='title' label={article.meta.title} level={1} />
+          <MarkdownEl dangerousHTML={article.html} />
+        </TemplateEl>
+      )
+
+    case 'Log':
+    case 'Note':
+      if (article.meta.title == null)
+        throw Error(`"${article.url}" metadata title expected to be string.`)
+      return (
+        <TemplateEl article={article}>
+          <HeadingEl id='title' label={article.meta.title} level={1} />
+          <span className='subtitle'>{article.meta.headline}</span>
           <MarkdownEl dangerousHTML={article.html} />
         </TemplateEl>
       )
