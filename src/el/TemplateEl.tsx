@@ -16,7 +16,7 @@ export function ArticleEl({article}: TemplateProps): React.ReactElement {
       return (
         <TemplateEl article={article}>
           <HeadingEl id='title' label={article.meta.title} level={1} />
-          <div dangerouslySetInnerHTML={{__html: article.html}} />
+          <MarkdownEl dangerousHTML={article.html} />
         </TemplateEl>
       )
   }
@@ -27,8 +27,19 @@ export type HomepageProps = Readonly<{article: Readonly<Article>}>
 export function HomepageEl({article}: TemplateProps): React.ReactElement {
   return (
     <TemplateEl article={article}>
-      <div dangerouslySetInnerHTML={{__html: article.html}} />
+      <MarkdownEl dangerousHTML={article.html} />
     </TemplateEl>
+  )
+}
+
+export type MarkdownProps = Readonly<{dangerousHTML: string}>
+
+export function MarkdownEl({dangerousHTML}: MarkdownProps): React.ReactElement {
+  return (
+    <div
+      className='markdown'
+      dangerouslySetInnerHTML={{__html: dangerousHTML}}
+    />
   )
 }
 

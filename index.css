@@ -37,9 +37,14 @@ h1 {
   margin-block-start: 0;
 }
 
+.markdown img {
+  max-width: 100%;
+}
+
 pre {
   background-color: #fffff6;
   padding: 1rem;
+  overflow-x: auto;
 }
 
 .heading__fragment {
