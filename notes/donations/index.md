@@ -29,7 +29,7 @@ elsewhere.
 
 ## Why mention it?
 
-It's often safer to keep your thoughts to yourself. I share my donations for a
+It's often safer to keep one's thoughts to oneself. I share my donations for a
 few reasons:
 
 - If I think a project is worth supporting, I think it's worth sharing.

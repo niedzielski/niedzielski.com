@@ -2,7 +2,7 @@
 dateModified: '2021-06-02'
 datePublished: '2021-06-02'
 keywords: ['blog', 'Linear Text']
-headline: 'A prototype of Linear Text.'
+headline: 'A Linear Text prototype.'
 title: '2021-06-02: Perfect Notes'
 ---
 
