@@ -57,7 +57,8 @@ export function IndexEl({
       <h1 id='title'>{article.meta.title}</h1>
       {subarticles.map((subarticle, i) => (
         <li key={i}>
-          <a href={`/${subarticle.url}`}>{subarticle.meta.title}</a>
+          <a href={`/${subarticle.url}`}>{subarticle.meta.title}</a>{' '}
+          <span>{subarticle.meta.headline}</span>
         </li>
       ))}
     </TemplateEl>
