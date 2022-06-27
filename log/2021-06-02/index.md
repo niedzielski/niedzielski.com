@@ -1,5 +1,5 @@
 ---
-dateModified: '2021-06-02'
+dateModified: '2022-06-19'
 datePublished: '2021-06-02'
 keywords: ['blog', 'Linear Text']
 headline: 'A Linear Text prototype.'

@@ -1,0 +1,58 @@
+<!doctype html><html lang="en" data-reactroot=""><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><meta name="keywords" content="blog,game dev,Once &amp; Future Cactus,mem"/><meta name="theme-color" content="#f2f5f5"/><meta name="creator" content="Stephen Niedzielski"/><link rel="canonical" href="https://niedzielski.com/log/2016-12-06"/><meta http-equiv="Content-Security-Policy" content="default-src &#x27;none&#x27;; img-src &#x27;self&#x27; data:; script-src &#x27;unsafe-inline&#x27;; style-src &#x27;self&#x27;; connect-src &#x27;self&#x27;"/><title>2016-12-06: Re: Once &amp; Future Cactus (1) - NIEDZIELSKI</title><link rel="stylesheet" href="/index.css"/><link rel="icon" href="/favicon.png?v=0.0.0"/></head><body><header><nav><ul class="nav__list"><li class="nav__link-item"><a class="nav__link" href="/"><img class="logo" src="/logo.png" width="160" height="24" alt="NIEDZIELSKI"/></a></li><li class="nav__link-item"><a class="nav__link" href="/works">Works</a></li><li class="nav__link-item"><a class="nav__link" href="/notes">Notes</a></li><li class="nav__link-item"><a class="nav__link" href="/log">Log</a></li><li class="nav__link-item"><a class="nav__link" href="/stephen">Profile</a></li></ul></nav></header><div class="page"><main><h1 class="heading heading--1" id="title"><a class="heading__fragment" href="#title">#</a>2016-12-06: Re: Once &amp; Future Cactus (1)</h1><span class="subtitle">The mem font prototype.</span><div class="markdown"><p><em>This log was originally posted to the
+<a href="https://forums.tigsource.com/index.php?topic=58848.msg1304474#msg1304474">TIGSource Forums</a>.</em></p>
+<p>I&#39;ve been just appending to the original post which isn&#39;t how things are down
+around here. Here&#39;s all the updates since this realization in one deuce below.
+Future updates will appear as replies :]</p>
+<p>Dec 6th 2016: I pushed some minor tweaks to the mem font and made some scripts
+to automate the build. I need to get package.json sorted to actually deliver a
+ttf file. I&#39;m having trouble getting it show without antialiasing in the game so
+I may need to add bitmap support somehow.</p>
+<p>Dec 8th 2016: A couple fixes to the mem font so it actually gets published in
+the NPM package. I think I&#39;ve got that business sorted. Now to work on the
+antialiasing issue.</p>
+<p>Dec 12th 2016: I&#39;ve been very busy with some upcoming work stuff but I sort of
+learned how to use Python-Fu directly from GIMP&#39;s command line which is nice. I
+was running TinyScheme scripts before which was fine but I would have used
+Python if I had known. I updated my list of
+<a href="https://github.com/niedzielski/shebang/blob/master/demo/gimp">shebang hacks</a>
+and converted the TinyScheme
+<a href="https://github.com/rndmem/mem-font/blob/master/bin/gimp-export-pngs">script</a>.
+This is all for that sweet mem font and I said &quot;sort of learned&quot; because I still
+can&#39;t figure out how to convert the result pdb.gimp_image_list() from an INT32
+ID to an IMAGE even though similar code worked in TinyScheme.</p>
+<p>I still can&#39;t disable antialiasing when the font is in game (in GIMP it looks
+crispy). I&#39;ve tried all the Phaser and CSS antialiasing options I could find but
+no dice. I even tried forcing canvas mode and shifting by a half pixel. Oh well.</p>
+<p>I&#39;m now trying a sprite sheet with a .fnt file but the font (4x4px) is actually
+too small to use with the recommend tool at it&#39;s native size and still shows up
+blurry regardless. I&#39;m hoping this is the last pixel perfect / sizing issue I
+have. I&#39;m gonna write a .fnt file for the new sprite sheet and start testing
+stock bitmaps if that doesn&#39;t work. o/</p>
+<p>Dec 13th 2016: I forgot in my last post that I actually already have bitmaps
+drawing just right (in a previous game prototype I was using vector graphics for
+everything). So I went forward with making my own .fnt file. I just copied the
+5px version from <a href="http://kvazars.com/littera/">Littera</a> and found
+<a href="http://www.angelcode.com/products/bmfont/doc/file_format.html">this doc</a> on the
+format which I used to flesh it out a little. It&#39;s XML-ish.</p>
+<p>I wrote the first unique bits by hand and, with a few lines of Bash to generate
+the character map, was able to hack together an output for testing quickly. I
+got the casing wrong on one attribute but after I spotted that it pretty much
+worked! It&#39;s super crisp. However, I&#39;ve no idea about how fixed width and
+kerning should play together. That part still looks like rubbish. I&#39;ve manually
+added kerning tweaks to a couple characters in the .fnt file and here&#39;s what
+that looks like:</p>
+<p><img src="2016-12-13-font-test.png" alt=""></p>
+<p>The kerning support in the .fnt file is really primitive. Where needed, kerning
+specialization between every permutation of character pairs will need to be
+identified and specified. The font is even less readable without kerning so I&#39;m
+pretty sure I need it but I don&#39;t know what this should look like when I&#39;m
+showing a countdown sequence, for example. I don&#39;t want the numbers bouncing
+back and forth because of different kerning. Maybe just for numbers it&#39;s always
+the same?</p>
+<p>No real commits today. I gotta get all of this from complete hackjob to partial
+hackjob. In particular, I really hope that if I need kerning I can encode all
+this information into the FontForge file and still keep that process from GIMP
+source to FontForge automated. The only other noteworthy mention is that I&#39;ve
+started versioning the devlog itself in the repo since I&#39;m taking the trouble to
+write it and it&#39;s all about the game.</p>
+</div></main><footer><small class="footer__text">© Stephen Niedzielski. This page was published on<!-- --> <time dateTime="2022-06-26">2016-12-06</time> <!-- -->and modified<!-- --> <time dateTime="2022-06-26">2022-06-26</time>.</small></footer></div><script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","author":{"@type":"Person","name":"Stephen Niedzielski","url":"https://niedzielski.com"},"dateModified":"2022-06-26","datePublished":"2016-12-06","headline":"The mem font prototype.","name":"2016-12-06: Re: Once & Future Cactus (1)","url":"https://niedzielski.com/log/2016-12-06","publisher":{"@type":"Organization","logo":"https://oidoid.com/oidoid.png","name":"oidoid","url":"https://oidoid.com"}}</script></body></html>
