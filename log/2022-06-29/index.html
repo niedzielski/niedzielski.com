@@ -1,0 +1,73 @@
+<!doctype html><html lang="en" data-reactroot=""><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><meta name="keywords" content="blog,game dev,Sawfish Solitaire,solitaire,patience,demon"/><meta name="theme-color" content="#f2f5f5"/><meta name="creator" content="Stephen Niedzielski"/><link rel="canonical" href="https://niedzielski.com/log/2022-06-29"/><meta http-equiv="Content-Security-Policy" content="default-src &#x27;none&#x27;; img-src &#x27;self&#x27; data:; script-src &#x27;unsafe-inline&#x27;; style-src &#x27;self&#x27;; connect-src &#x27;self&#x27;"/><title>2022-06-29: Sawfish Solitaire - NIEDZIELSKI</title><link rel="stylesheet" href="/index.css"/><link rel="icon" href="/favicon.png?v=0.0.0"/></head><body><header><nav><ul class="nav__list"><li class="nav__link-item"><a class="nav__link" href="/"><img class="logo" src="/logo.png" width="160" height="24" alt="NIEDZIELSKI"/></a></li><li class="nav__link-item"><a class="nav__link" href="/works">Works</a></li><li class="nav__link-item"><a class="nav__link" href="/notes">Notes</a></li><li class="nav__link-item"><a class="nav__link" href="/log">Log</a></li><li class="nav__link-item"><a class="nav__link" href="/stephen">Profile</a></li></ul></nav></header><div class="page"><main><h1 class="heading heading--1" id="title"><a class="heading__fragment" href="#title">#</a>2022-06-29: Sawfish Solitaire</h1><span class="subtitle">Getting back to Nature Elsewhere in a very roundabout way.</span><div class="markdown"><p>I&#39;ve been working on a game of solitaire / patience / demon. My interest was
+rekindled by an unexpected inquiry from a stranger about an incomplete
+implementation,
+<a href="https://github.com/oidoid/klondike-solitaire">klondike-solitaire</a>, I made last
+year but it&#39;s something I had to hoped to complete since starting.</p>
+<p>The game won&#39;t be anything special. The project goal is to be an approachable
+effort to work my way back towards Nature Elsewhere, a much larger work with
+many similar challenges. I&#39;ve already seen some promising progress:</p>
+<ul>
+<li>I converted the old code over to Deno TypeScript. It&#39;s a marvelous ecosystem
+(I also use it for this site) and recent developments such as the task runner
+(like NPM scripts) have only made it nicer. I keep waiting for when I&#39;ll need
+some nasty glue, and I do think it&#39;s coming, but it hasn&#39;t yet. I&#39;m even using
+Deno for bundling right now.</li>
+<li>I am exploring a monorepo style with Git submodules where the old code,
+klondike-solitaire, is generic card game logic and sawfish-solitaire is &quot;the
+game.&quot; Most exciting to me is isolating some code I keep losing and keep
+rewriting into a shared library which I am looking forward to reusing
+elsewhere too.</li>
+</ul>
+<p>Probably most of my time has been experimenting and bikeshedding on
+implementation details, mostly for the fun of it. I have maybe 90% of the card
+game logic complete and am currently reviving all the old code I can into the
+shared library.</p>
+<p>The working title is &quot;Sawfish&quot;. The name is inspired by the submarine in these
+haunting plot summaries for On the Beach
+(<a href="https://en.wikipedia.org/wiki/On_the_Beach_(novel)#Plot">novel</a>,
+<a href="https://en.wikipedia.org/wiki/On_the_Beach_(1959_film)#Plot">1959 film</a>). It
+was fun to think on someone being the last person on Earth in this submarine of
+the dying, playing their own game of patience. Name is tentative though, and I
+don&#39;t think anyone will think more on it.</p>
+<p>I&#39;ve been reflecting on this
+<a href="https://shmuplations.com/yokoi/">interview with Gunpei Yokoi (Game Boy inventor) and Yukihito Morikawa</a>
+(warning: interview objectifies women) more than I realized. The art style will
+be very minimal like an LCD watch which I chose to keep the project small, it
+looks neat, and because I don&#39;t want to try to compete with the player&#39;s
+imagination.</p>
+<p>I played a little Bloodstained: Ritual of the Night earlier this year (it&#39;s by
+the guy known for Castlevania: Symphony of the Night, I think). I am being a bit
+old-fashioned but I just didn&#39;t feel like they left much room for my
+imagination. It was like everything they could do, they did, and somtimes that
+was the only reason for it. An example is when the protagonist uses a gun, maybe
+every three shots she has to yell, &quot;take this!&quot; It&#39;s literal noise. It feels
+stifling like I can&#39;t put what I want there.</p>
+<p>I think it&#39;s a big problem for indie games like mine because I don&#39;t have the
+budget or ability to stretch the imagination with never-before-seen special
+effects. It&#39;s more about what I don&#39;t put there than what I do. Anything I do
+put there has to be intentional and well-executed within the constraints set or
+it will just be a cheaper version of something else, instead of something
+special for what it is.</p>
+<p>The palette is three colors when flattened but four with transparency (2-bit).
+Here&#39;s the title placeholder:</p>
+<p><img src="sawfish-logo.png" alt="Title logo."></p>
+<p>(And here&#39;s the favicon which I hastily hacked up into the title logo above:)</p>
+<img src=sawfish-favicon.png width=256 height=256 alt="Sawfish favicon.">
+
+<p>I think I want to have four variations of ~12-13 characters. I don&#39;t know if the
+characters will have any continuity. Here&#39;s the current placeholders for the
+queens which helped me find a size that I could draw people in as wanted:</p>
+<p><img src="sawfish-queens.png" alt="Four queens."></p>
+<p>I might have this entity in there too, Patience the Demon:</p>
+<p><img src="patience-the-demon.gif" alt="Patience the Demon."></p>
+<p>They don&#39;t do anything except observe your activity and record scoring and state
+like Clippy, which I think might be fun. I should probably cut the blink
+in-between.</p>
+<p>If I stick with the sawfish theme, I might try to do a cross between the fish&#39;s
+saw blade and the submarine across the four aces horizontally or maybe an
+outline for the logo. I&#39;ve also been thinking on including an
+<a href="https://www.youtube.com/watch?v=y7eNohjaDbs">S-O-S Morse code sequence sound</a>,
+maybe on &quot;win&quot;.</p>
+<p>The going is slow due to work and the responsibilities of being but I am happy
+it is developing.</p>
+</div></main><footer><small class="footer__text">© Stephen Niedzielski. This page was published on<!-- --> <time dateTime="2022-06-29">2022-06-29</time> <!-- -->and modified<!-- --> <time dateTime="2022-06-29">2022-06-29</time>.</small></footer></div><script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","author":{"@type":"Person","name":"Stephen Niedzielski","url":"https://niedzielski.com"},"dateModified":"2022-06-29","datePublished":"2022-06-29","headline":"Getting back to Nature Elsewhere in a very roundabout way.","name":"2022-06-29: Sawfish Solitaire","url":"https://niedzielski.com/log/2022-06-29","publisher":{"@type":"Organization","logo":"https://oidoid.com/oidoid.png","name":"oidoid","url":"https://oidoid.com"}}</script></body></html>
