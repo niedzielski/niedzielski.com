@@ -6,7 +6,7 @@ headline: 'My favorite websites.'
 title: 'Bookmarks'
 ---
 
-## Regularly
+## Regulars
 
 - [Android Arts](https://androidarts.com)
 - [Hacker News](https://news.ycombinator.com)

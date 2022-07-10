@@ -1,0 +1,514 @@
+<!doctype html><html lang="en" data-reactroot=""><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><meta name="keywords" content="blog,game dev,Nature Elsewhere,game design document,GDD,illustration"/><meta name="theme-color" content="#f2f5f5"/><meta name="creator" content="Stephen Niedzielski"/><link rel="canonical" href="https://niedzielski.com/log/2021-01-24"/><meta http-equiv="Content-Security-Policy" content="default-src &#x27;none&#x27;; img-src &#x27;self&#x27; data:; script-src &#x27;unsafe-inline&#x27;; style-src &#x27;self&#x27;; connect-src &#x27;self&#x27;; media-src &#x27;self&#x27;"/><title>2021-01-24: Game Design Document - NIEDZIELSKI</title><link rel="stylesheet" href="/index.css"/><link rel="icon" href="/favicon.png?v=0.0.0"/></head><body><header><nav><ul class="nav__list"><li class="nav__link-item"><a class="nav__link" href="/"><img class="logo" src="/logo.png" width="160" height="24" alt="NIEDZIELSKI"/></a></li><li class="nav__link-item"><a class="nav__link" href="/works">Works</a></li><li class="nav__link-item"><a class="nav__link" href="/notes">Notes</a></li><li class="nav__link-item"><a class="nav__link" href="/log">Log</a></li><li class="nav__link-item"><a class="nav__link" href="/stephen">Profile</a></li></ul></nav></header><div class="page"><main><h1 class="heading heading--1" id="title"><a class="heading__fragment" href="#title">#</a>2021-01-24: Game Design Document</h1><span class="subtitle">The abandoned Nature Elsewhere GDD.</span><div class="markdown"><p><em>This is the start of a game design document I had been working on in 2020 and
+wanted to preserve somewhere despite it being so incomplete.</em></p>
+<p><img src="nature-elsewhere-wordmark.png" alt="nature elsewhere"></p>
+<h2 class="heading heading--2" id="game-design-document" data-reactroot=""><a class="heading__fragment" href="#game-design-document">#</a>Game Design Document</h2><!-- @import "[TOC]" {cmd="toc" depthFrom=2 depthTo=6 orderedList=false} -->
+<!-- code_chunk_output -->
+
+<ul>
+<li><a href="#design">Design</a><ul>
+<li><a href="#hard-pixels">Hard Pixels</a></li>
+<li><a href="#mem-font">mem Font</a></li>
+</ul>
+</li>
+<li><a href="#gameplay">Gameplay</a><ul>
+<li><a href="#action">Action</a></li>
+<li><a href="#items-and-collecting">Items and Collecting</a><ul>
+<li><a href="#health">Health</a><ul>
+<li><a href="#apple">Apple</a></li>
+<li><a href="#preserved-bananas">Preserved Bananas</a></li>
+</ul>
+</li>
+<li><a href="#weapons">Weapons</a><ul>
+<li><a href="#hyper-space-dagger">Hyper Space Dagger</a></li>
+</ul>
+</li>
+<li><a href="#ammo">Ammo</a><ul>
+<li><a href="#stingers-bee-stingers">Stingers (Bee Stingers)</a></li>
+</ul>
+</li>
+<li><a href="#widgets-modifiers">Widgets (Modifiers)</a><ul>
+<li><a href="#timeless-rose">Timeless Rose</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#inventory-management">Inventory Management</a></li>
+<li><a href="#rpg">RPG</a><ul>
+<li><a href="#experience-points-xp-progression">Experience Points (XP), Progression</a></li>
+</ul>
+</li>
+<li><a href="#influences">Influences</a></li>
+</ul>
+</li>
+<li><a href="#the-worlds-of-nature-elsewhere">The Worlds of Nature Elsewhere</a><ul>
+<li><a href="#plot">Plot</a></li>
+<li><a href="#levels-and-level-flow">Levels and Level Flow</a><ul>
+<li><a href="#menus">Menus</a><ul>
+<li><a href="#title">Title</a></li>
+<li><a href="#options">Options</a></li>
+<li><a href="#level-select">Level Select</a></li>
+<li><a href="#in-game-level-editor">In-Game Level Editor</a></li>
+<li><a href="#map-inventory-and-status">Map, Inventory, and Status</a></li>
+<li><a href="#game-over-continue-loop">Game Over / Continue Loop</a></li>
+<li><a href="#end-win">End / Win</a></li>
+</ul>
+</li>
+<li><a href="#stages">Stages</a><ul>
+<li><a href="#earth">Earth</a><ul>
+<li><a href="#field">Field</a></li>
+<li><a href="#ruined-library">Ruined Library</a></li>
+<li><a href="#lost-college">Lost College</a></li>
+<li><a href="#storymaker">Storymaker</a></li>
+</ul>
+</li>
+<li><a href="#moon">Moon</a><ul>
+<li><a href="#abandoned-moonbase">Abandoned Moonbase</a></li>
+<li><a href="#the-immortal-vessel">The Immortal Vessel</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#inhabitants">Inhabitants</a><ul>
+<li><a href="#player">Player</a></li>
+<li><a href="#nature">Nature</a><ul>
+<li><a href="#bee">Bee</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#development">Development</a><ul>
+<li><a href="#fractional-to-integral-conversions-rounding-errors-jittering-and-working-with-pixels">Fractional to Integral Conversions, Rounding Errors, Jittering, and Working with Pixels</a><ul>
+<li><a href="#update-order">Update Order</a></li>
+<li><a href="#truncation-rounding-flooring-and-ceiling">Truncation, Rounding, Flooring, and Ceiling</a></li>
+<li><a href="#shader-floating-point-limits">Shader Floating Point Limits</a></li>
+<li><a href="#floating-point-modulo">Floating Point Modulo</a></li>
+</ul>
+</li>
+<li><a href="#scaling">Scaling</a></li>
+</ul>
+</li>
+<li><a href="#level-format-and-parsing">Level Format and Parsing</a></li>
+<li><a href="#license">License</a><ul>
+<li><a href="#gpl-30-only">GPL-3.0-only</a></li>
+<li><a href="#cc-by-sa-40">CC-BY-SA-4.0</a></li>
+</ul>
+</li>
+</ul>
+<!-- /code_chunk_output -->
+
+<h2 class="heading heading--2" id="design" data-reactroot=""><a class="heading__fragment" href="#design">#</a>Design</h2><h3 class="heading heading--3" id="hard-pixels" data-reactroot=""><a class="heading__fragment" href="#hard-pixels">#</a>Hard Pixels</h3><p><img src="native-pixels.png" alt="Native pixels."> <img src="scaled-pixels.png" alt="Scaled pixels."><br>
+<em>Above left: pixels are small on high resolution displays. A single native pixel
+is centered within the box pointed at by the arrow. The lines of the box are
+also one pixel thick. Next to the box is an unscaled native render of a sprite.
+Above right: the same sprite rendered with scaling. Scaled pixels are integral
+multiples of native pixels. For example, 1x, 2x, 3x, and 4x scaled pixels are 1
+px x 1 px (1 px<sup>2</sup>), 2 px x 2 px (4 px<sup>2</sup>), 3 px x 3 px (9
+px<sup>2</sup>), and 4 px x 4 px (16 px<sup>2</sup>), respectively. The native
+size of this sprite with its background is 12 px x 21 px for a total of 252
+native pixels. In this 10x render, every single scaled pixel is 100 native
+pixels for a total of 25 200 native pixels.</em></p>
+<p>Pixel graphics are prevalent among early video games as well as modern indies.
+The term is broad and applicable but Nature Elsewhere can be further defined as
+a &quot;hard pixels&quot; game wherein:</p>
+<ul>
+<li>Low resolution renders are scaled to better fit a diversity of displays.
+Rendered pixels are therefore called &quot;scaled pixels&quot; as opposed to
+conventional unscaled native or physical device pixels. See
+<a href="#scaling">scaling</a>.</li>
+<li>All rendered content aligns to the scaled pixels grid. Scaled pixels are
+atomic. That is, the smallest units visible, and are completely set or unset.
+Fractions are used for many intermediate calculations but integral truncation
+concludes all visible results so as to align. This includes camera
+positioning. See <a href="#truncation-rounding-flooring-and-ceiling">rounding</a>.</li>
+<li>Per sprite scaling is used sparingly and is independent of scaled pixel grid
+alignment. Universal per sprite scaling is <em>never</em> used to effect pseudo
+sub-scaled pixel movement.</li>
+<li>All scaling is integral, aliased, and often uniform.</li>
+<li>Transparency is used often. Antialiasing, blurring, and translucency are never
+used for sprites, OpenGL shader-based effects, or any other rendering.</li>
+<li>All colors are derived from a minimal palette.</li>
+</ul>
+<p>The aspirations of hard pixels are:</p>
+<ul>
+<li>To be as pixel perfect as practical. A balance between modern affordances and
+rigid adherence to more traditional pixel art.</li>
+<li>To give the illusion that the display&#39;s native pixels match the render scale.
+There are no intermediate states. Pixel art is unique in that pixels are
+digital, on or off, and nowhere in between. There&#39;s no blurriness unlike our
+analog reality. This limited state is a profound and wonderful property that
+Nature Elsewhere attempts to preserve as much as possible for all visual
+matters.</li>
+<li>A feeling of total clarity and finitude. Many permutations are possible but
+there&#39;s no ambiguity. The world of Nature Elsewhere is lockstep, synchronous,
+and completely coherent and cohesive.</li>
+<li>A feeling that repeat identical inputs produce deterministic outputs.</li>
+</ul>
+<p>Many modern pixel games use scaled sprites in high resolution unscaled renders.
+In isolation, these sprites are conventional pixel art. However, they align to
+the device&#39;s <em>native</em> pixel grid and may be antialiased. This works well for
+many games but Nature Elsewhere retains the consistency of a scaled pixel grid
+for all rendered content.</p>
+<p><img src="scaled-pixels-grid-alignment.png" alt="Scaled pixels grid alignment."></p>
+<p><em>Above: a 32x scaled render. The checkerboard pattern shows the scaled pixel
+grid. Each checkerboard square represents a _single</em> scaled pixel that occupies
+1024 native pixels. Since a scaled pixel is logically a single cohesive whole
+pixel that is on or off, only completely filling or not filling any square is
+valid._</p>
+<p><em>On the left, &quot;a&quot; is aligned to the scaled pixel grid giving the illusion of
+real albeit large pixels. On the right, &quot;a&quot; is misaligned to the native pixel
+grid along the horizontal axis, breaking the illusion of pixelation when any
+other differently aligned content is considered in relation. In a hard pixels
+game like Nature Elsewhere, only the former is used and &quot;a&quot; would only move in
+multiples of 32 native pixels in either direction.</em></p>
+<p>Hard pixels feels distinctive. Trends towards high resolution anti-aliased
+graphics in both popular and pixel art games, display motion blur, and
+cathode-ray tube television scan lines and distortion, give the experience a
+distinct &quot;hard&quot; or &quot;toothy&quot; feeling like ratcheting something into position with
+a coarse geared machine. The feeling is particularly pronounced on the camera
+movement which hops in scaled pixel increments. This snapping feels quite
+toothy.</p>
+<p>camera scaling is incorrect for last pixel row and column</p>
+<h3 class="heading heading--3" id="mem-font" data-reactroot=""><a class="heading__fragment" href="#mem-font">#</a>mem Font</h3><p><img src="https://github.com/oddoid/mem/raw/master/dist/mem-prop-5x6-10x-sheet.png" alt="mem font set"></p>
+<img align="right" width="256" src="mem-prop-5x6-10x-sheet.png" alt="mem font set" border="1">
+
+<p><strong><a href="https://rndmem.com">mem</a></strong> has grown from the most minimalist, monospaced,
+barely legible font to a five pixels wide by six pixels tall (plus one pixel
+leading), balanced, proportional, sans light font designed for maximal
+readability. Readability is improved by both consistency and favoring smoother
+forms that avoid diagonal pixels and usually come at the expense of a little
+personality and sometimes a more optimal form in isolation but better overall
+consistency with the set. Each character is as wide as it should be and as small
+as it can be. Further details on the design of mem can be read in the
+<a href="https://github.com/oddoid/mem">project repo</a>.</p>
+<p>mem is now available as a sprite sheet and a TrueType Font. Nature Elsewhere
+consumes the former.</p>
+<p>Only the renderer and shaders are aware of scaled pixels. All other code assumes
+a one-to-one point to pixel mapping.</p>
+<h2 class="heading heading--2" id="gameplay" data-reactroot=""><a class="heading__fragment" href="#gameplay">#</a>Gameplay</h2><p>Isometric action RPG.</p>
+<h3 class="heading heading--3" id="action" data-reactroot=""><a class="heading__fragment" href="#action">#</a>Action</h3><h3 class="heading heading--3" id="items-and-collecting" data-reactroot=""><a class="heading__fragment" href="#items-and-collecting">#</a>Items and Collecting</h3><p>There are many drops available in the game. Most are useless.</p>
+<h4 class="heading heading--4" id="health" data-reactroot=""><a class="heading__fragment" href="#health">#</a>Health</h4><h5 class="heading heading--5" id="apple" data-reactroot=""><a class="heading__fragment" href="#apple">#</a>Apple</h5><h5 class="heading heading--5" id="preserved-bananas" data-reactroot=""><a class="heading__fragment" href="#preserved-bananas">#</a>Preserved Bananas</h5><h4 class="heading heading--4" id="weapons" data-reactroot=""><a class="heading__fragment" href="#weapons">#</a>Weapons</h4><h5 class="heading heading--5" id="hyper-space-dagger" data-reactroot=""><a class="heading__fragment" href="#hyper-space-dagger">#</a>Hyper Space Dagger</h5><h4 class="heading heading--4" id="ammo" data-reactroot=""><a class="heading__fragment" href="#ammo">#</a>Ammo</h4><h5 class="heading heading--5" id="stingers-bee-stingers-" data-reactroot=""><a class="heading__fragment" href="#stingers-bee-stingers-">#</a>Stingers (Bee Stingers)</h5><h4 class="heading heading--4" id="widgets-modifiers-" data-reactroot=""><a class="heading__fragment" href="#widgets-modifiers-">#</a>Widgets (Modifiers)</h4><h5 class="heading heading--5" id="timeless-rose" data-reactroot=""><a class="heading__fragment" href="#timeless-rose">#</a>Timeless Rose</h5><h3 class="heading heading--3" id="inventory-management" data-reactroot=""><a class="heading__fragment" href="#inventory-management">#</a>Inventory Management</h3><h3 class="heading heading--3" id="rpg" data-reactroot=""><a class="heading__fragment" href="#rpg">#</a>RPG</h3><h4 class="heading heading--4" id="experience-points-xp-progression" data-reactroot=""><a class="heading__fragment" href="#experience-points-xp-progression">#</a>Experience Points (XP), Progression</h4><h3 class="heading heading--3" id="influences" data-reactroot=""><a class="heading__fragment" href="#influences">#</a>Influences</h3><h2 class="heading heading--2" id="the-worlds-of-nature-elsewhere" data-reactroot=""><a class="heading__fragment" href="#the-worlds-of-nature-elsewhere">#</a>The Worlds of Nature Elsewhere</h2><h3 class="heading heading--3" id="plot" data-reactroot=""><a class="heading__fragment" href="#plot">#</a>Plot</h3><h3 class="heading heading--3" id="levels-and-level-flow" data-reactroot=""><a class="heading__fragment" href="#levels-and-level-flow">#</a>Levels and Level Flow</h3><h4 class="heading heading--4" id="menus" data-reactroot=""><a class="heading__fragment" href="#menus">#</a>Menus</h4><h5 class="heading heading--5" id="title" data-reactroot=""><a class="heading__fragment" href="#title">#</a>Title</h5><h5 class="heading heading--5" id="options" data-reactroot=""><a class="heading__fragment" href="#options">#</a>Options</h5><h5 class="heading heading--5" id="level-select" data-reactroot=""><a class="heading__fragment" href="#level-select">#</a>Level Select</h5><p>Unlockable</p>
+<h5 class="heading heading--5" id="in-game-level-editor" data-reactroot=""><a class="heading__fragment" href="#in-game-level-editor">#</a>In-Game Level Editor</h5><p>Unlockable. Files are saved as &quot;cartridges&quot; JSON blobs. See save file format
+in-source documentation. Files are shareable and there&#39;s nothing special or
+unique about them.</p>
+<h5 class="heading heading--5" id="map-inventory-and-status" data-reactroot=""><a class="heading__fragment" href="#map-inventory-and-status">#</a>Map, Inventory, and Status</h5><h5 class="heading heading--5" id="game-over-continue-loop" data-reactroot=""><a class="heading__fragment" href="#game-over-continue-loop">#</a>Game Over / Continue Loop</h5><h5 class="heading heading--5" id="end-win" data-reactroot=""><a class="heading__fragment" href="#end-win">#</a>End / Win</h5><h4 class="heading heading--4" id="stages" data-reactroot=""><a class="heading__fragment" href="#stages">#</a>Stages</h4><h5 class="heading heading--5" id="earth" data-reactroot=""><a class="heading__fragment" href="#earth">#</a>Earth</h5><h6 class="heading heading--6" id="field" data-reactroot=""><a class="heading__fragment" href="#field">#</a>Field</h6><h6 class="heading heading--6" id="ruined-library" data-reactroot=""><a class="heading__fragment" href="#ruined-library">#</a>Ruined Library</h6><h6 class="heading heading--6" id="lost-college" data-reactroot=""><a class="heading__fragment" href="#lost-college">#</a>Lost College</h6><h6 class="heading heading--6" id="storymaker" data-reactroot=""><a class="heading__fragment" href="#storymaker">#</a>Storymaker</h6><h5 class="heading heading--5" id="moon" data-reactroot=""><a class="heading__fragment" href="#moon">#</a>Moon</h5><h6 class="heading heading--6" id="abandoned-moonbase" data-reactroot=""><a class="heading__fragment" href="#abandoned-moonbase">#</a>Abandoned Moonbase</h6><h6 class="heading heading--6" id="the-immortal-vessel" data-reactroot=""><a class="heading__fragment" href="#the-immortal-vessel">#</a>The Immortal Vessel</h6><h3 class="heading heading--3" id="inhabitants" data-reactroot=""><a class="heading__fragment" href="#inhabitants">#</a>Inhabitants</h3><h4 class="heading heading--4" id="player" data-reactroot=""><a class="heading__fragment" href="#player">#</a>Player</h4><h4 class="heading heading--4" id="nature" data-reactroot=""><a class="heading__fragment" href="#nature">#</a>Nature</h4><h5 class="heading heading--5" id="bee" data-reactroot=""><a class="heading__fragment" href="#bee">#</a>Bee</h5><h2 class="heading heading--2" id="development" data-reactroot=""><a class="heading__fragment" href="#development">#</a>Development</h2><h3 class="heading heading--3" id="fractional-to-integral-conversions-rounding-errors-jittering-and-working-with-pixels" data-reactroot=""><a class="heading__fragment" href="#fractional-to-integral-conversions-rounding-errors-jittering-and-working-with-pixels">#</a>Fractional to Integral Conversions, Rounding Errors, Jittering, and Working with Pixels</h3><h4 class="heading heading--4" id="update-order" data-reactroot=""><a class="heading__fragment" href="#update-order">#</a>Update Order</h4><p>All integral variables passed from JavaScript to WebGL are inherently truncated.
+When passing an independent variable, this implicit truncation by converting to
+shader input is acceptable. However, when deriving a renderable variable from
+another variable, the first must be truncated independently to avoid possible
+jitter. That is, inconsistent results.</p>
+<p>For example, consider deriving camera position at an offset from the player&#39;s
+position. The player may be at 0.1 and the camera follows at an offset of 100.9.
+The rendered player&#39;s position is implicitly truncated to 0. Depending on
+formulation, the rendered camera&#39;s position may be (inconsistencies in bold):</p>
+<table>
+<thead>
+<tr>
+<th>Formula Type</th>
+<th>Formula</th>
+<th>Result</th>
+<th>Rendered player</th>
+<th>Rendered camera</th>
+<th>Rendered distance</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Implicit truncation.</td>
+<td>0.1 px + 100.9 px</td>
+<td>101.0 px</td>
+<td>0 px</td>
+<td>101 px</td>
+<td><strong>101 px</strong></td>
+</tr>
+<tr>
+<td>Truncate before player input.</td>
+<td>trunc(0.1 px) + 100.9 px</td>
+<td>100.9 px</td>
+<td>0 px</td>
+<td>100 px</td>
+<td>100 px</td>
+</tr>
+<tr>
+<td>Truncate after player input.</td>
+<td>trunc(0.1 px + 100.9 px)</td>
+<td>101.0 px</td>
+<td>0 px</td>
+<td>101 px</td>
+<td><strong>101 px</strong></td>
+</tr>
+</tbody></table>
+<p>Now when the player&#39;s position has increased to 1.0 and the rendered position is
+1 px, one pixel forward. The rendered distance between the camera and the player
+should be constant and not change regardless of where the player is.</p>
+<table>
+<thead>
+<tr>
+<th>Formula Type</th>
+<th>Formula</th>
+<th>Result</th>
+<th>Rendered player</th>
+<th>Rendered camera</th>
+<th>Rendered distance</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Implicit truncation.</td>
+<td>1.0 px + 100.9 px</td>
+<td>101.9 px</td>
+<td>1 px</td>
+<td>101 px</td>
+<td><strong>100 px</strong></td>
+</tr>
+<tr>
+<td>Truncate before player input.</td>
+<td>trunc(1.0 px) + 100.9 px</td>
+<td>101.9 px</td>
+<td>1 px</td>
+<td>101 px</td>
+<td>100 px</td>
+</tr>
+<tr>
+<td>Truncate after player input.</td>
+<td>trunc(1.0 px + 100.9 px)</td>
+<td>101.0 px</td>
+<td>1 px</td>
+<td>101 px</td>
+<td><strong>100 px</strong></td>
+</tr>
+</tbody></table>
+<p>As shown above, when truncation is not performed or it occurs afterwards on the
+sum, rounding errors can cause the rendered distance between the camera and the
+position to vary under different inputs instead of remaining at a constant
+offset from the player. This causes a jarring jitter effect.</p>
+<h4 class="heading heading--4" id="truncation-rounding-flooring-and-ceiling" data-reactroot=""><a class="heading__fragment" href="#truncation-rounding-flooring-and-ceiling">#</a>Truncation, Rounding, Flooring, and Ceiling</h4><p>Because truncation is always implied, any intermediate truncation is strongly
+preferred to rounding, flooring, or ceiling. Consider when the player is at 0.1
+px, 0.5 px, 1.0 px, and -0.5 px:</p>
+<table>
+<thead>
+<tr>
+<th>Formula (player at 0.1 px)</th>
+<th>Result</th>
+<th>Rendered player</th>
+<th>Rendered camera</th>
+<th>Rendered distance</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>trunc(0.1 px) + 100.9 px</td>
+<td>100.9 px</td>
+<td>0 px</td>
+<td>100 px</td>
+<td>100 px</td>
+</tr>
+<tr>
+<td>round(0.1 px) + 100.9 px</td>
+<td>100.9 px</td>
+<td>0 px</td>
+<td>100 px</td>
+<td><strong>100 px</strong></td>
+</tr>
+<tr>
+<td>floor(0.1 px) + 100.9 px</td>
+<td>100.9 px</td>
+<td>0 px</td>
+<td>100 px</td>
+<td><strong>100 px</strong></td>
+</tr>
+<tr>
+<td>ceil(0.1 px) + 100.9 px</td>
+<td>101.9 px</td>
+<td>0 px</td>
+<td>101 px</td>
+<td><strong>101 px</strong></td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>Formula (player at 0.5 px)</th>
+<th>Result</th>
+<th>Rendered player</th>
+<th>Rendered camera</th>
+<th>Rendered distance</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>trunc(0.5 px) + 100.9 px</td>
+<td>100.9 px</td>
+<td>0 px</td>
+<td>100 px</td>
+<td>100 px</td>
+</tr>
+<tr>
+<td>round(0.5 px) + 100.9 px</td>
+<td>101.9 px</td>
+<td>0 px</td>
+<td>101 px</td>
+<td><strong>101 px</strong></td>
+</tr>
+<tr>
+<td>floor(0.5 px) + 100.9 px</td>
+<td>100.9 px</td>
+<td>0 px</td>
+<td>100 px</td>
+<td><strong>100 px</strong></td>
+</tr>
+<tr>
+<td>ceil(0.5 px) + 100.9 px</td>
+<td>101.9 px</td>
+<td>0 px</td>
+<td>101 px</td>
+<td><strong>101 px</strong></td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>Formula (player at 1.0 px)</th>
+<th>Result</th>
+<th>Rendered player</th>
+<th>Rendered camera</th>
+<th>Rendered distance</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>trunc(1.0 px) + 100.9 px</td>
+<td>101.9 px</td>
+<td>1 px</td>
+<td>101 px</td>
+<td>100 px</td>
+</tr>
+<tr>
+<td>round(1.0 px) + 100.9 px</td>
+<td>101.9 px</td>
+<td>1 px</td>
+<td>101 px</td>
+<td><strong>100 px</strong></td>
+</tr>
+<tr>
+<td>floor(1.0 px) + 100.9 px</td>
+<td>101.9 px</td>
+<td>1 px</td>
+<td>101 px</td>
+<td><strong>100 px</strong></td>
+</tr>
+<tr>
+<td>ceil(1.0 px) + 100.9 px</td>
+<td>101.9 px</td>
+<td>1 px</td>
+<td>101 px</td>
+<td><strong>100 px</strong></td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>Formula (player at -0.5 px)</th>
+<th>Result</th>
+<th>Rendered player</th>
+<th>Rendered camera</th>
+<th>Rendered distance</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>trunc(-0.5 px) + 100.9 px</td>
+<td>100.9 px</td>
+<td>0 px</td>
+<td>100 px</td>
+<td>100 px</td>
+</tr>
+<tr>
+<td>round(-0.5 px) + 100.9 px</td>
+<td>100.9 px</td>
+<td>0 px</td>
+<td>100 px</td>
+<td><strong>100 px</strong></td>
+</tr>
+<tr>
+<td>floor(-0.5 px) + 100.9 px</td>
+<td>99.9 px</td>
+<td>0 px</td>
+<td>99 px</td>
+<td><strong>99 px</strong></td>
+</tr>
+<tr>
+<td>ceil(-0.5 px) + 100.9 px</td>
+<td>100.9 px</td>
+<td>0 px</td>
+<td>100 px</td>
+<td><strong>100 px</strong></td>
+</tr>
+</tbody></table>
+<p>It&#39;s also possible to see intense jittering when moving diagonally. For example,
+moving an image left one pixel on one frame and then up another pixel on the
+next frame. It is often better to instead synchronize the movements in each
+direction to occur on the same frame.</p>
+<p>Fractional numbers are unfriendly to pixel art. A recurring problem in the
+project has been weird pixel glitches and these have often been rooted in
+rounding errors. Since JavaScript only supports BigInt and typed arrays
+natively, the <a href="https://github.com/oddoid/nature-elsewhere/blob/typescript/src/math/XY.ts">XY</a> and <a href="https://github.com/oddoid/nature-elsewhere/blob/typescript/src/math/WH.ts">WH</a> TypeScript classes helped encapsulate some of the
+truncation inherent when working with strictly integers. They surprisingly
+worked extraordinarily well but Rust has support for many integral types.</p>
+<h4 class="heading heading--4" id="shader-floating-point-limits" data-reactroot=""><a class="heading__fragment" href="#shader-floating-point-limits">#</a>Shader Floating Point Limits</h4><p>My Pixel XL phone&#39;s
+<a href="https://stackoverflow.com/a/4430934/970346"><code>mediump</code> precision is noticeably lower</a>
+than my laptop&#39;s. Since the program&#39;s execution time is fed into the shader as a
+floating point, this was quickly overflowing causing calculations to become
+quite out of sync. I&#39;ve since increased the request to <code>highp</code>.</p>
+<h4 class="heading heading--4" id="floating-point-modulo" data-reactroot=""><a class="heading__fragment" href="#floating-point-modulo">#</a>Floating Point Modulo</h4><p>Floating point errors can occur when taking relatively small divisors of very
+large numbers. <a href="https://wikipedia.org/wiki/Modulo_operation#Remainder_calculation_for_the_modulo_operation">The following</a> seemed to work ok and is
+<a href="https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/mod.xhtml">the definition for OpenGL&#39;s <code>mod</code></a>:</p>
+<pre><code>// 0x4000 is 2^14 (mediump).
+val = val - Math.trunc(val / 0x4000) \* 0x4000
+</code></pre>
+<h3 class="heading heading--3" id="scaling" data-reactroot=""><a class="heading__fragment" href="#scaling">#</a>Scaling</h3><p>Integer scaling with a minimum size seems to work best.</p>
+<ul>
+<li>Maximum integer scaling to the minimum dimension (width or height) can leave
+large empty areas. For example, these might be rendered as vacant black bars
+on the left and right.</li>
+<li>Noninteger scaling produces odd pixels that are inconsistently sized. This is
+especially noticeable for such large, low-resolution virtual pixels. Either
+they&#39;re slightly larger than their neighbors, missing, or rendered incorrectly
+(e.g., black or glitchy) due to integer assumptions elsewhere.</li>
+<li>Given an ideal viewport size, integer scaling usually generates an image
+that&#39;s either too large or too small. Picking the maximum integer scale that
+shows a minimum viewport size works well. The result is either a viewport that
+is scaled exactly to the document size or the next size larger. In the
+(frequent) latter case, the result is simply to show larger viewport than
+ideal. If different minimum viewport sizes are used, the scaling may vary
+which means that pixels will vary in size between levels. This is a compromise
+but seems to work visually. Even with integral scaling, both dimensions (which
+are likely disproportionate) must be considered and rounding up must be
+performed. Otherwise, strange and often subtle visual artifacts will creep in.</li>
+</ul>
+<p>The scaling transformation can be done in a number of ways. The best approach
+may be to change the canvas and viewport size to match the document every frame,
+and then do all the scaling in WebGL. This keeps all the math as a projection in
+WebGL which keeps things much simpler than diving into the world of CSS. Note
+also that the width and height Canvas attributes are changed, not the style
+width and height properties. The latter is a scaling operation.</p>
+<p>Listening for window size events asynchronously seems to be a common pitfall as
+well, which I stumbled into while working with Phaser 2.</p>
+<p>There are many configurations that mostly work but I only found a couple that
+worked well. This was all quite a frustration when combined with synchronizing
+all the different Phaser 2 framework subsystems and eventually led me to pursue
+WebGL.</p>
+<h2 class="heading heading--2" id="level-format-and-parsing" data-reactroot=""><a class="heading__fragment" href="#level-format-and-parsing">#</a>Level Format and Parsing</h2><h2 class="heading heading--2" id="license" data-reactroot=""><a class="heading__fragment" href="#license">#</a>License</h2><p>© Stephen Niedzielski.</p>
+<h3 class="heading heading--3" id="gpl-3-0-only" data-reactroot=""><a class="heading__fragment" href="#gpl-3-0-only">#</a>GPL-3.0-only</h3><p>This program is free software: you can redistribute it and/or modify it under
+the terms of the GNU General Public License as published by the Free Software
+Foundation, version 3.</p>
+<p>This program is distributed in the hope that it will be useful, but WITHOUT ANY
+WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+PARTICULAR PURPOSE. See the GNU General Public License for more details.</p>
+<p>You should have received a copy of the GNU General Public License along with
+this program. If not, see <a href="https://www.gnu.org/licenses/">https://www.gnu.org/licenses/</a>.</p>
+<h3 class="heading heading--3" id="cc-by-sa-4-0" data-reactroot=""><a class="heading__fragment" href="#cc-by-sa-4-0">#</a>CC-BY-SA-4.0</h3><p>This work, excluding source code, is licensed under the Creative Commons
+Attribution-ShareAlike 4.0 International License. To view a copy of this
+license, visit <a href="https://creativecommons.org/licenses/by-sa/4.0/">https://creativecommons.org/licenses/by-sa/4.0/</a> or send a letter
+to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.</p>
+<pre><code>╭&gt;°╮┌─╮┌─╮╭─╮┬┌─╮
+│  ││ ││ ││ │││ │
+╰──╯└─╯└─╯╰─╯┴└─╯
+</code></pre>
+</div></main><footer><small class="footer__text">© Stephen Niedzielski. This page was published on<!-- --> <time dateTime="2022-07-10">2021-01-24</time> <!-- -->and modified<!-- --> <time dateTime="2022-07-10">2022-07-10</time>.</small></footer></div><script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","author":{"@type":"Person","name":"Stephen Niedzielski","url":"https://niedzielski.com"},"dateModified":"2022-07-10","datePublished":"2021-01-24","headline":"The abandoned Nature Elsewhere GDD.","name":"2021-01-24: Game Design Document","url":"https://niedzielski.com/log/2021-01-24","publisher":{"@type":"Organization","logo":"https://oidoid.com/oidoid.png","name":"oidoid","url":"https://oidoid.com"}}</script></body></html>
