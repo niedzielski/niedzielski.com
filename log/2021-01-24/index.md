@@ -1,5 +1,5 @@
 ---
-dateModified: '2022-07-10'
+dateModified: '2022-09-04'
 datePublished: '2021-01-24'
 keywords:
   [
@@ -76,7 +76,7 @@ wanted to preserve somewhere despite it being so incomplete._
   - [Scaling](#scaling)
 - [Level Format and Parsing](#level-format-and-parsing)
 - [License](#license)
-  - [GPL-3.0-only](#gpl-30-only)
+  - [AGPL-3.0-only](#agpl-30-only)
   - [CC-BY-SA-4.0](#cc-by-sa-40)
 
 <!-- /code_chunk_output -->
@@ -424,20 +424,21 @@ WebGL.
 
 ## License
 
-© Stephen Niedzielski.
+© oidoid.
 
-### GPL-3.0-only
+### AGPL-3.0-only
 
 This program is free software: you can redistribute it and/or modify it under
-the terms of the GNU General Public License as published by the Free Software
-Foundation, version 3.
+the terms of the GNU Affero General Public License as published by the Free
+Software Foundation, either version 3 of the License, or (at your option) any
+later version.
 
 This program is distributed in the hope that it will be useful, but WITHOUT ANY
 WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
-PARTICULAR PURPOSE. See the GNU General Public License for more details.
+PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
 
-You should have received a copy of the GNU General Public License along with
-this program. If not, see <https://www.gnu.org/licenses/>.
+You should have received a copy of the GNU Affero General Public License along
+with this program. If not, see <https://www.gnu.org/licenses/>.
 
 ### CC-BY-SA-4.0
 
