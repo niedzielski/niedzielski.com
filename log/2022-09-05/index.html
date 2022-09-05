@@ -1,0 +1,243 @@
+<!doctype html><html lang="en" data-reactroot=""><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><meta name="keywords" content="blog,game dev,Sublime Solitaire,Sawfish Solitaire,solitaire,patience,demon,WebGL,pixel perfect,pixel art"/><meta name="theme-color" content="#f2f5f5"/><meta name="creator" content="Stephen Niedzielski"/><link rel="canonical" href="https://niedzielski.com/log/2022-09-05"/><meta http-equiv="Content-Security-Policy" content="default-src &#x27;none&#x27;; img-src &#x27;self&#x27; data:; script-src &#x27;unsafe-inline&#x27;; style-src &#x27;self&#x27;; connect-src &#x27;self&#x27;; media-src &#x27;self&#x27;"/><title>2022-09-05: Pixel perfect - NIEDZIELSKI</title><link rel="stylesheet" href="/index.css"/><link rel="icon" href="/favicon.png?v=0.0.0"/></head><body><header><nav><ul class="nav__list"><li class="nav__link-item"><a class="nav__link" href="/"><img class="logo" src="/logo.png" width="160" height="24" alt="NIEDZIELSKI"/></a></li><li class="nav__link-item"><a class="nav__link" href="/works">Works</a></li><li class="nav__link-item"><a class="nav__link" href="/notes">Notes</a></li><li class="nav__link-item"><a class="nav__link" href="/log">Log</a></li><li class="nav__link-item"><a class="nav__link" href="/stephen">Profile</a></li></ul></nav></header><div class="page"><main><h1 class="heading heading--1" id="title"><a class="heading__fragment" href="#title">#</a>2022-09-05: Pixel perfect</h1><span class="subtitle">Some longstanding game development challenges resolve nicely.</span><div class="markdown"><p>It&#39;s early September, still hot, rainier than I remember in seasons past, and
+the crickets chirp loudly late into the night.</p>
+<p>Work is coming along slowly but nicely for my tiny solitaire video game. The
+underlying goal is to return to developing my primary creative pursuit, Nature
+Elsewhere. By completion of solitaire, I hope to have established my own little
+from-scratch platform for expression that I can build upon as a necessary
+side-effect.</p>
+<h2 class="heading heading--2" id="sawfish-solitaire-and-naming" data-reactroot=""><a class="heading__fragment" href="#sawfish-solitaire-and-naming">#</a>Sawfish Solitaire and naming</h2><p>If only to keep things simple, I&#39;ve resolved to abandon
+<a href="../2022-06-29">all of the Sawfish ideas in the last post</a> except for the
+inexplicable Patience the Demon and the card faces which will be semi-nature or
+evolution themed. This cool color variation of the oidoid logo didn&#39;t make the
+cut either:</p>
+<p><a href="oidoid.png"><img src="oidoid.png" alt="The oidoid logo."></a></p>
+<p>I&#39;ve also dropped the Sawfish Solitaire name. The new working title is Sublime
+Solitaire which I chose using my usual constraint of .com availability. I picked
+the name using some JavaScript-y approximation of
+<a href="https://sive.rs/com">the CD Baby guy&#39;s method</a> for finding available .com
+domains. I&#39;ve published the code under
+<a href="https://github.com/niedzielski/whois-local">whois-local</a>. I will probably
+change the name again.</p>
+<p>I&#39;m glad I don&#39;t have to keep using the whois command-line tool which, due to
+multiple domain scoops, has me paranoid whether my queries are as private as I
+thought.</p>
+<h2 class="heading heading--2" id="pixel-perfect-webgl" data-reactroot=""><a class="heading__fragment" href="#pixel-perfect-webgl">#</a>Pixel perfect WebGL</h2><p>Exact pixel graphics are essential to what I wish to express. I chose pixel art
+in part to do something small well. Yet, inconsistencies have plagued
+development from the beginning (years!). It was a major motivation to build my
+own game engine instead of using an existing one like Phaser 2.</p>
+<h3 class="heading heading--3" id="one-pixel-is-a-lot" data-reactroot=""><a class="heading__fragment" href="#one-pixel-is-a-lot">#</a>One pixel is a lot</h3><p>These glitches are often subtle for many graphics and only occur in specific
+configurations. In the following real example, a column of pixels is truncated
+out of the middle of the canvas on a certain window size as I changed the
+browser zoom level:</p>
+<p><a href="pixel-glitches.gif"><img src="pixel-glitches.gif" alt="Example of pixel glitches."></a></p>
+<p>I would be unlikely to notice the above inconsistency in a static image due to
+the nature of the illustration. However, the bug is glaring for some renders. I
+think the vertical card borders, in this case, would probably be the most
+noticeable single pixel difference.</p>
+<p>The magnitude of the issue is difficult to convey but maybe a comparable musical
+analogy is that it&#39;s like being off-key or a little out of sync. You might not
+notice it in some songs but it would ruin others and, as a musician, you have to
+fix it or learn to incorporate it.</p>
+<h3 class="heading heading--3" id="ideal" data-reactroot=""><a class="heading__fragment" href="#ideal">#</a>Ideal</h3><p>In time, I identified the desired behavior as something like:</p>
+<ol>
+<li>Given sufficient physical or native pixels, the camera will be guaranteed to
+be at least a minimum width and height. Assuming a minimum working area makes
+it easier to build screens and levels. In solitaire, for example, a minimum
+width guarantees the tableau piles can always be laid out horizontally.</li>
+<li>The minimum camera area will be scaled to the greatest integer where both the
+scaled width and scaled height fit. Any remaining space will be rendered as
+well. Eg, a minimum camera of 160 px × 144 px could render at 2x in a 320 px²
+window with an additional 32 px × 320 px rendered. Shrinking the window or
+available native pixels will shrink the level scale as needed to ensure the
+working area is always rendered.</li>
+<li>The scaled or level pixels may not be a multiple of the native window
+dimensions. Up to one level pixel (technically, <code>scale - 1</code> px) will be
+clipped by the window on both axes as needed.</li>
+<li>The browser zoom will be totally inert since the native pixels available is
+unchanging.</li>
+<li>No fancy portrait / landscape flipping initially.</li>
+</ol>
+<h3 class="heading heading--3" id="too-many-variables" data-reactroot=""><a class="heading__fragment" href="#too-many-variables">#</a>Too many variables</h3><p>There&#39;s a ridiculous number of variables that effect scaling, some
+interdependent, including:</p>
+<ul>
+<li>Window or client size.</li>
+<li>Body dimensions (<code>width</code> and <code>height</code>), <code>margin</code>, and <code>overflow</code>.</li>
+<li>Canvas attribute dimensions.</li>
+<li>Canvas <code>display</code>, <code>image-rendering</code>, and <code>width</code> and <code>height</code> style
+properties.</li>
+<li>Browser zoom and <code>devicePixelRatio</code>.</li>
+<li>Minimum camera size and the camera transform.</li>
+</ul>
+<p>The above along with the usual compounding factors of development, such as no
+real integer type, has made this a tricky interplay of bugs to solve.</p>
+<h3 class="heading heading--3" id="altogether" data-reactroot=""><a class="heading__fragment" href="#altogether">#</a>Altogether</h3><p>When it&#39;s working properly, a rendered checkerboard pattern will appear uniform
+and doesn&#39;t change size at any browser zoom. In practice, I&#39;ve found it to be
+the most effective and confident test.</p>
+<p><a href="pixel-perfect.png"><img src="pixel-perfect.png" alt="Example of as pixel perfect as it gets."></a></p>
+<p>In my thinking, truncating the last level pixel on both axes as needed is the
+best tradeoff. Highlighted in red in the above example (click for a larger
+view), you can see the the last level pixel gets truncated by the window
+depending on dimensions as the scaled pixel is not necessarily an even multiple
+of the native window size. At first I thought, &quot;I think I can render that last
+partial level pixel correctly instead of letting the window halve it,&quot; but then
+I realized that even if I did render it as a half-pixel, it would look identical
+and <em>appear</em> truncated by the window. Worse, the camera would have to be
+represented with fractional values instead of integral.</p>
+<p>The other approach I considered is that if the partial pixel was omitted by
+shrinking the camera width to 415 px (<code>Math.floor( window / scale )</code> instead of
+<code>Math.ceil()</code>), the window would have an unrendered native 1 px gap (.5 level
+pixels). However, this gap can be as large as <code>scale - 1</code> so I think going over
+most frequently looks best.</p>
+<p>I&#39;m probably about as satisfied as I&#39;ll ever be with the solution. It doesn&#39;t
+force a window size on the user, the UI (only Patience and the background right
+now) can follow the screen edge at nice tile-sized intervals to keep the rhythm,
+and the scaling is perfectly proportional integers. The only shortcoming is the
+last column and row may be truncated. If I keep the minimum camera size a
+multiple of common display dimensions, full-screen will often be pixel perfect.</p>
+<p>Tangentially, I&#39;ve also added a crisp 16 px² favicon.</p>
+<h2 class="heading heading--2" id="simpler-faster-sprites" data-reactroot=""><a class="heading__fragment" href="#simpler-faster-sprites">#</a>Simpler, faster sprites</h2><p>Sprites are rendering primitives and they&#39;ve received some major simplifications
+recently.</p>
+<h3 class="heading heading--3" id="on-gpu-sprite-look-ups" data-reactroot=""><a class="heading__fragment" href="#on-gpu-sprite-look-ups">#</a>On GPU sprite look-ups</h3><p>In the prior implementation, sprites were not tile-based. They could be any size
+so stitching together multiple tiles into meta-tile sprites was never necessary
+(except for layering and composition effects). I&#39;ve retained that design but
+previously the renderer would send the source image location (x, y, width, and
+height) for every sprite <em>instance</em>. Now, a look-up table by animation ID is
+loaded on the GPU once. This provides the same functionality and reduces bytes
+sent to a two-byte identifier instead of eight but more importantly, simplifies
+the sprite data layout to be as basic as a tile-based sprite. This kind of dead
+simple mapping between atlas source and render destination is easier to think
+about: &quot;The only supported source is a predefined region specified by ID. I can
+map this source image to anywhere in the level at any size.&quot;</p>
+<h3 class="heading heading--3" id="no-more-sprite-sorting-and-fewer-layers" data-reactroot=""><a class="heading__fragment" href="#no-more-sprite-sorting-and-fewer-layers">#</a>No more sprite sorting and fewer layers</h3><p>Nature Elsewhere used
+<a href="https://wikipedia.org/wiki/Painter&#39;s_algorithm">the painter&#39;s algorithm</a> to
+draw sprites on top of each other in the correct order. Of note, the old naive
+implementation did all sorting on the CPU. The new implementation converts a
+logical layer like &quot;Background&quot; to a z-depth and discards any covered fragments,
+which allows the GPU to compose all the sprites regardless of order.
+<a href="https://www.patternsgameprog.com/opengl-2d-facade-24-z-buffer">This OpenGL z-buffer article presents the topic well</a>.</p>
+<p>In Nature Elsewhere, if two sprites were on the same layer, I often wanted the
+sprite further down the screen to appear in front. For example, a tree sprite
+should be rendered in front of a bee sprite if the bottom of the tree was
+further down the screen than the bee and vice versa. The painter&#39;s algorithm
+often worked well for this: sort by later and within a layer sort by
+<code>y + spriteHeight</code>. However, one case it didn&#39;t work well for was UI which had
+an escalating layer / z-index battle like &quot;UILo&quot;, &quot;UIMid&quot;, &quot;UIHi&quot;, and &quot;UIHiHi&quot;
+to support composing dialog borders, dialog backgrounds, button borders, and
+button text in the correct order. I think I also had to use masking.</p>
+<pre><code>+-------------------------------------+
+| Dialog border                       |
+| +----------------------------------+|
+| | Dialog background                ||
+| |     +----------------+           ||
+| |     | Button border  |           ||
+| |     | +-------------+|           ||
+| |     | | Button text ||           ||
+| |     | +-------------+|           ||
+| |     +----------------+           ||
+| +----------------------------------+|
++-------------------------------------+
+</code></pre>
+<p>The new renderer simplifies intra-layer resolution by adding a bit for flagging
+whether a sprite on a given layer should be sorted by the start or the end
+position. This is only used to resolve order within a layer. In the above
+example, the dialog border is large and spans the from the top of the screen to
+the bottom. If I flag that intra-layer order conflicts should be resolved by the
+end position, the border will always &quot;win&quot; (be drawn in front) because it
+extends to the bottom of the screen. However, if I flag that the top of the
+sprite should be used, it&#39;ll never win and be drawn in the back because it
+starts at the top of the screen.</p>
+<h3 class="heading heading--3" id="multi-sprite-entities" data-reactroot=""><a class="heading__fragment" href="#multi-sprite-entities">#</a>Multi-sprite entities</h3><p>In general, I want to avoid layering and multi-sprite entities as they were a
+source of complexity in the old Nature Elsewhere implementation. It&#39;s easy to
+imagine the cards being composed in-game from a suit sprite, rank sprite, face
+sprite, and card blank sprite but in the spirit of simplicity I&#39;ve pre-baked all
+the cards as single sprite entities. This increases the sprite sheet size but
+they&#39;re not animated so there&#39;s room to spare. I still do some layering with the
+UI backgrounds though and would like to explore a better masking and composition
+in a
+<a href="https://developer.android.com/develop/ui/views/graphics/drawables#nine-patch">9-patch</a>-like
+sprite implementation, something I never got far into in past Nature Elsewhere
+work.</p>
+<h3 class="heading heading--3" id="more-bitflags" data-reactroot=""><a class="heading__fragment" href="#more-bitflags">#</a>More bitflags</h3><p>I&#39;ve started using bitflags over dedicated fields. Presumably, there&#39;s a
+microscopic performance penalty for masking out writes correctly but reads and
+GPU transmission are essentially free and the sprite primitive stays nicely
+compact whether it needs to leverage special flags or not.
+<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number/MAX_SAFE_INTEGER">JavaScript safe integers are 53-bits wide</a>
+(6+ bytes) and I anticipate most of the data in my games will be 16 bits or
+less, so there&#39;s lots of room.</p>
+<p>As an example, texture wrapping offsets are now two nibbles (one byte). I use
+texture wrapping in several places of Nature Elsewhere including rain and
+<a href="https://wikipedia.org/wiki/Marching_ants">marching-ants</a> UI. However, most
+sprites do not care and don&#39;t have to carry around extra fields (four bytes
+whether it was used or not) for these special cases. I am much more excited for
+the slimmer, simpler sprites than the performance savings.</p>
+<h3 class="heading heading--3" id="apple-won" data-reactroot=""><a class="heading__fragment" href="#apple-won">#</a>Apple won</h3><p>Some years back I was shocked to find that all my devices supported WebGL v2
+which had been out for a long time but my partner&#39;s iPad did not. Apparently, it
+was well-known that Apple devices only supported WebGL v1 so I had to downgrade
+but I imagined myself in a personal competition to release Nature Elsewhere
+before Apple released WebGL v2 support. Well, they won so now I&#39;m back on v2 and
+there were some modest improvements to the renderer. It&#39;s mostly just nice to
+not have to worry about v1-specifics.</p>
+<p>It will be neat to see what WebGPU brings and I hope to one day publish a Deno
+desktop WebGPU app without too much cruft.</p>
+<h2 class="heading heading--2" id="making-due-with-make" data-reactroot=""><a class="heading__fragment" href="#making-due-with-make">#</a>Making due with Make</h2><p>I had some deep experiences with GNU Make early in my professional life that
+left a mark. I am continually surprised that I haven&#39;t found a modern
+alternative for it, perhaps Rust-based, that eliminates it&#39;s innumerable
+foot-guns, scalability issues, unfun syntax, and other limitations. The closest
+I&#39;ve seen is <a href="https://github.com/casey/just">just</a> which looks promising but
+unfortunately keeps some of the syntax I dislike and drops all file-based
+dependency support. Make is just so useful so, once again, I somehow find myself
+using Make.</p>
+<p>In recent years, I had been using a crufty
+<a href="https://github.com/niedzielski/shebang/blob/e7bfa9d6392ac34bd0702631ca01fd1ec678465e/demo/make#L2">shebang trick</a>
+to mark the makefile itself as executable and force a bunch of useful command
+line flags like <code>--jobs</code> and <code>--warn-undefined-variables</code>. Not long ago, some
+wild child even added the <code>--split-string</code> flag to env so you can put it all in
+the shebang itself. Nevertheless, I didn&#39;t like the shebang approach because
+it&#39;s less obvious what a script called <code>make</code> does when you encounter a new
+project vs <code>makefile</code> or <code>package.json</code>, it&#39;s a little more comfortable to type
+<code>make</code> than <code>./make</code>, and the strange mix of shell and Make syntax confuses my
+editor.</p>
+<p>Many of these command-line flags have special variable equivalents like
+<a href="https://www.gnu.org/software/make/manual/make.html#Options_002fRecursion"><code>MAKEFLAGS</code></a>,
+allowing for much nicer vanilla makefiles.
+<a href="https://github.com/niedzielski/makefile-skeleton">I&#39;ve captured my current thinking in this template</a>.
+In doing so, and just when I thought &quot;oh, I&#39;ve finally got all this crup
+sorted,&quot; I stumbled over
+<a href="https://savannah.gnu.org/bugs/?9060">some 20+ year old bug</a> that I think was
+why I stared using the shebang approach. In discourse, however, it turns out to
+have already been fixed (!) but
+<a href="https://git.savannah.gnu.org/cgit/make.git/tag/?h=4.3">the last release of Make</a>
+was a couple years back. I look forward to the next release.</p>
+<p>One last thing I think I only recently realized was that I can de facto fork
+pretty painlessly in a makefile by virtue of using <code>--jobs</code> which I want on
+anyway. Any recipes that have long-running processes like watchers execute in
+their own job so no fancy traps are really needed so far as I know.</p>
+<p>I think I started using Make at v3.80 for Cygwin. It&#39;s nice that it only took me
+14 years or so to draw these conclusions.</p>
+<h2 class="heading heading--2" id="entities-components-systems" data-reactroot=""><a class="heading__fragment" href="#entities-components-systems">#</a>Entities, Components, Systems</h2><p>I built out the most modest ECS I could after reading this article on
+<a href="https://maxwellforbes.com/posts/typescript-ecs-implementation">a simple TypeScript implementation</a>
+and another on
+<a href="https://austinmorlan.com/posts/entity_component_system">a performant C version</a>.
+It&#39;s very early in development and I haven&#39;t made any performance improvements
+but I really like how its isolated what should be disparate pieces of game
+logic. In some ways, it doesn&#39;t seem too far from what I had previously, and
+adapting my &quot;follow cam&quot; ECS-like to a more proper ECS required few changes, for
+instance, but the concepts are a lot clearer to me.</p>
+<h2 class="heading heading--2" id="javascript-integral-types" data-reactroot=""><a class="heading__fragment" href="#javascript-integral-types">#</a>JavaScript integral types</h2><p>I am still waffling a bit on my branded type implementation for integer values.
+I&#39;m pretty happy with it overall and have written it such that supporting widths
+from U4/I4 to U32/I32 is a minimum of code but maybe I should switch to bigints.</p>
+<h2 class="heading heading--2" id="input-profiling" data-reactroot=""><a class="heading__fragment" href="#input-profiling">#</a>Input profiling</h2><p>I&#39;ve adding some input latency measurements to my input states and plan to
+expose these in some kind of debug pane. Pointer events are maybe 6 ms behind on
+average but, when using a stylus, the delay feels much longer.</p>
+<h2>Summer's end</h2>
+
+<p>So, everything seems to be coming together nicely and many of the problems I&#39;ve
+had historically in Nature Elsewhere and before have been dissolving in really
+pleasing ways. Maybe I&#39;m benefiting from prior experience, improved tools,
+having some distance from the problems, more study time, many smaller projects
+in-between, or all of the aforementioned. Whatsoever the reason, I can&#39;t wait to
+get this big monorepo-ish platform put together and published.</p>
+<p>Programming is at the center of my life. I had a wonderful trip to Rocky
+Mountain National Park and I bought two bucket hats last week.</p>
+<p><a href="stephen-2022-08-30.jpeg"><img src="stephen-2022-08-30-thumbnail.jpeg" alt="As good as it gets."></a></p>
+</div></main><footer><small class="footer__text">© Stephen Niedzielski. This page was published on<!-- --> <time dateTime="2022-09-05">2022-09-05</time> <!-- -->and modified<!-- --> <time dateTime="2022-09-05">2022-09-05</time>.</small></footer></div><script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","author":{"@type":"Person","name":"Stephen Niedzielski","url":"https://niedzielski.com"},"dateModified":"2022-09-05","datePublished":"2022-09-05","headline":"Some longstanding game development challenges resolve nicely.","name":"2022-09-05: Pixel perfect","url":"https://niedzielski.com/log/2022-09-05","publisher":{"@type":"Organization","logo":"https://oidoid.com/oidoid.png","name":"oidoid","url":"https://oidoid.com"}}</script></body></html>
