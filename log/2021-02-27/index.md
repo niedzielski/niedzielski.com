@@ -1,12 +1,10 @@
 ---
-dateModified: '2022-07-10'
+dateModified: '2022-09-07'
 datePublished: '2021-02-27'
 keywords: ['blog', 'game dev', 'Nature Elsewhere', 'illustration']
 headline: 'Sketching out new Nature Elsewhere screens.'
 title: '2021-02-27: February'
 ---
-
-#
 
 # Title
 

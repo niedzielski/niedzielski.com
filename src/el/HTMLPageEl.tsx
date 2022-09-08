@@ -1,15 +1,15 @@
-import React from 'react'
+import React from 'react';
 
 export type HTMLPageProps = Readonly<{
-  children: React.ReactNode
-  dateModified: string
-  datePublished: string
-  keywords: string[]
-  headline: string
-  image?: string
-  title?: string
-  url: string
-}>
+  children: React.ReactNode;
+  dateModified: string;
+  datePublished: string;
+  keywords: string[];
+  headline: string;
+  image?: string;
+  title?: string;
+  url: string;
+}>;
 
 export function HTMLPageEl({
   children,
@@ -19,16 +19,16 @@ export function HTMLPageEl({
   headline,
   image,
   title,
-  url
+  url,
 }: HTMLPageProps): React.ReactElement {
-  const canonicalURL = `https://niedzielski.com/${url}`
+  const canonicalURL = `https://niedzielski.com/${url}`;
   const blob = JSON.stringify({
     '@context': 'https://schema.org',
     '@type': 'Article',
     author: {
       '@type': 'Person',
       name: 'Stephen Niedzielski',
-      url: 'https://niedzielski.com'
+      url: 'https://niedzielski.com',
     },
     dateModified,
     datePublished,
@@ -40,9 +40,9 @@ export function HTMLPageEl({
       '@type': 'Organization',
       logo: 'https://oidoid.com/oidoid.png',
       name: 'oidoid',
-      url: 'https://oidoid.com'
-    }
-  })
+      url: 'https://oidoid.com',
+    },
+  });
   return (
     <html lang='en'>
       <head>
@@ -67,9 +67,9 @@ export function HTMLPageEl({
         {children}
         <script
           type='application/ld+json'
-          dangerouslySetInnerHTML={{__html: blob}}
+          dangerouslySetInnerHTML={{ __html: blob }}
         />
       </body>
     </html>
-  )
+  );
 }

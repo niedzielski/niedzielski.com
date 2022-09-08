@@ -1,5 +1,5 @@
 ---
-dateModified: '2022-09-04'
+dateModified: '2022-09-07'
 datePublished: '2021-01-24'
 keywords:
   [
@@ -380,8 +380,7 @@ large numbers. [The following] seemed to work ok and is
 val = val - Math.trunc(val / 0x4000) \* 0x4000
 ```
 
-[the following]:
-  https://wikipedia.org/wiki/Modulo_operation#Remainder_calculation_for_the_modulo_operation
+[The following]: https://wikipedia.org/wiki/Modulo_operation#Remainder_calculation_for_the_modulo_operation
 
 ### Scaling
 

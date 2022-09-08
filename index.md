@@ -26,7 +26,7 @@ title: null
     </div>
   </div>
 
-  <div class="lead__text">
+<div class="lead__text">
 Hello, I'm Stephen Niedzielski. Welcome to my so-called website.
 
 <!-- #dirs -->
@@ -38,5 +38,5 @@ Hello, I'm Stephen Niedzielski. Welcome to my so-called website.
   other places you can find me online.
 
 <!-- This comment is needed for a weird Markdown parsing error. -->
-  </div>
+</div>
 </section>

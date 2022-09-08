@@ -1,5 +1,5 @@
 ---
-dateModified: '2022-06-29'
+dateModified: '2022-09-07'
 datePublished: '2022-06-29'
 keywords:
   ['blog', 'game dev', 'Sawfish Solitaire', 'solitaire', 'patience', 'demon']
@@ -35,8 +35,8 @@ shared library.
 
 The working title is "Sawfish". The name is inspired by the submarine in these
 haunting plot summaries for On the Beach
-([novel](<https://en.wikipedia.org/wiki/On_the_Beach_(novel)#Plot>),
-[1959 film](<https://en.wikipedia.org/wiki/On_the_Beach_(1959_film)#Plot>)). It
+([novel](https://en.wikipedia.org/wiki/On_the_Beach_(novel)#Plot),
+[1959 film](https://en.wikipedia.org/wiki/On_the_Beach_(1959_film)#Plot)). It
 was fun to think on someone being the last person on Earth in this submarine of
 the dying, playing their own game of patience. Name is tentative though, and I
 don't think anyone will think more on it.

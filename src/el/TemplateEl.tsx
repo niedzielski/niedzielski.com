@@ -1,70 +1,74 @@
-import {HeadingEl} from '@/el/HeadingEl.tsx'
-import {HTMLPageEl} from '@/el/HTMLPageEl.tsx'
-import {NavEl} from '@/el/NavEl.tsx'
-import React from 'react'
-import type {Article} from '@/types/Article.ts'
+import { HeadingEl } from '@/el/HeadingEl.tsx';
+import { HTMLPageEl } from '@/el/HTMLPageEl.tsx';
+import { NavEl } from '@/el/NavEl.tsx';
+import React from 'react';
+import type { Article } from '@/types/Article.ts';
 
-export type ArticleProps = Readonly<{article: Readonly<Article>}>
+export type ArticleProps = Readonly<{ article: Readonly<Article> }>;
 
-export function ArticleEl({article}: TemplateProps): React.ReactElement {
+export function ArticleEl({ article }: TemplateProps): React.ReactElement {
   switch (article.type) {
     case 'Homepage':
-      return <HomepageEl article={article} />
+      return <HomepageEl article={article} />;
     case 'Index':
     case 'Profile':
     case 'Work':
-      if (article.meta.title == null)
-        throw Error(`"${article.url}" metadata title expected to be string.`)
+      if (article.meta.title == null) {
+        throw Error(`"${article.url}" metadata title expected to be string.`);
+      }
       return (
         <TemplateEl article={article}>
           <HeadingEl id='title' label={article.meta.title} level={1} />
           <MarkdownEl dangerousHTML={article.html} />
         </TemplateEl>
-      )
+      );
 
     case 'Log':
     case 'Note':
-      if (article.meta.title == null)
-        throw Error(`"${article.url}" metadata title expected to be string.`)
+      if (article.meta.title == null) {
+        throw Error(`"${article.url}" metadata title expected to be string.`);
+      }
       return (
         <TemplateEl article={article}>
           <HeadingEl id='title' label={article.meta.title} level={1} />
           <span className='subtitle'>{article.meta.headline}</span>
           <MarkdownEl dangerousHTML={article.html} />
         </TemplateEl>
-      )
+      );
   }
 }
 
-export type HomepageProps = Readonly<{article: Readonly<Article>}>
+export type HomepageProps = Readonly<{ article: Readonly<Article> }>;
 
-export function HomepageEl({article}: TemplateProps): React.ReactElement {
+export function HomepageEl({ article }: TemplateProps): React.ReactElement {
   return (
     <TemplateEl article={article}>
       <MarkdownEl dangerousHTML={article.html} />
     </TemplateEl>
-  )
+  );
 }
 
-export type MarkdownProps = Readonly<{dangerousHTML: string}>
+export type MarkdownProps = Readonly<{ dangerousHTML: string }>;
 
-export function MarkdownEl({dangerousHTML}: MarkdownProps): React.ReactElement {
+export function MarkdownEl(
+  { dangerousHTML }: MarkdownProps,
+): React.ReactElement {
   return (
     <div
       className='markdown'
-      dangerouslySetInnerHTML={{__html: dangerousHTML}}
+      dangerouslySetInnerHTML={{ __html: dangerousHTML }}
     />
-  )
+  );
 }
 
 export type IndexProps = Readonly<{
-  article: Readonly<Article>
-  subarticles: readonly Readonly<Article>[]
-}>
+  article: Readonly<Article>;
+  subarticles: readonly Readonly<Article>[];
+}>;
 
 export function IndexEl({
   article,
-  subarticles
+  subarticles,
 }: IndexProps): React.ReactElement {
   return (
     <TemplateEl article={article}>
@@ -76,17 +80,17 @@ export function IndexEl({
         </li>
       ))}
     </TemplateEl>
-  )
+  );
 }
 
 export type TemplateProps = Readonly<{
-  article: Readonly<Article>
-  children?: React.ReactNode
-}>
+  article: Readonly<Article>;
+  children?: React.ReactNode;
+}>;
 
 export function TemplateEl({
   article,
-  children
+  children,
 }: TemplateProps): React.ReactElement {
   return (
     <HTMLPageEl
@@ -118,5 +122,5 @@ export function TemplateEl({
         </footer>
       </div>
     </HTMLPageEl>
-  )
+  );
 }

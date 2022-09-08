@@ -1,12 +1,12 @@
-import React from 'react'
+import React from 'react';
 
 // #dirs
 const links = [
   ['Works', '/works'],
   ['Notes', '/notes'],
   ['Log', '/log'],
-  ['Profile', '/stephen']
-]
+  ['Profile', '/stephen'],
+];
 
 export function NavEl(): React.ReactElement {
   return (
@@ -32,15 +32,15 @@ export function NavEl(): React.ReactElement {
         ))}
       </ul>
     </nav>
-  )
+  );
 }
 
-type NavLinkProps = Readonly<{children: React.ReactNode; href: string}>
+type NavLinkProps = Readonly<{ children: React.ReactNode; href: string }>;
 
-function NavLink({children, href}: NavLinkProps): React.ReactElement {
+function NavLink({ children, href }: NavLinkProps): React.ReactElement {
   return (
     <a className='nav__link' href={href}>
       {children}
     </a>
-  )
+  );
 }
