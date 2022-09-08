@@ -1,10 +1,11 @@
 #!/usr/bin/env -S deno run --allow-read --allow-write --quiet
-import { _createWalkEntry, expandGlob, WalkEntry } from 'fs';
+import { createWalkEntry } from 'std/fs/_util.ts';
+import { expandGlob, WalkEntry } from 'std/fs/mod.ts';
 import { ArticleEl, IndexEl } from '@/el/TemplateEl.tsx';
 import { compareDates } from '@/types/Date.ts';
 import { parseArticle } from '@/parsers/articleParser.ts';
 import { parseYYYYMMDDDate } from '@/parsers/dateParser.ts';
-import * as path from 'path';
+import * as path from 'std/path/mod.ts';
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import type { Article, ArticleType } from '@/types/Article.ts';
@@ -117,7 +118,7 @@ async function main(): Promise<void> {
     renderIndex(index, articles);
   }
   for (const [type, filename] of extraMdFilenames) {
-    const entry = await _createWalkEntry(filename);
+    const entry = await createWalkEntry(filename);
     await renderArticle(entry, type);
   }
 }

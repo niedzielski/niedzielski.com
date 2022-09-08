@@ -1,11 +1,10 @@
 {
   "imports": {
     "@/": "./src/",
-    "fs": "https://deno.land/std@0.126.0/fs/mod.ts",
     "js-yaml": "https://esm.sh/js-yaml@4.1.0",
     "marked": "https://esm.sh/marked@4.0.12",
-    "path": "https://deno.land/std@0.126.0/path/mod.ts",
     "react-dom/": "https://esm.sh/react-dom@17.0.2/",
-    "react": "https://esm.sh/react@17.0.2"
+    "react": "https://esm.sh/react@17.0.2",
+    "std/": "https://deno.land/std@0.154.0/"
   }
 }
