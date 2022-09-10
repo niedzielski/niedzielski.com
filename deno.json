@@ -10,7 +10,7 @@
     "useUnknownInCatchVariables": true
   },
   "fmt": { "options": { "singleQuote": true } },
-  "importMap": "mods.json",
+  "importMap": "src/mods.json",
   "tasks": {
     "build": "src/mod.tsx"
   }
