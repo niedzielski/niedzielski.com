@@ -7,14 +7,21 @@ image: 'https://niedzielski.com/stephen.jpeg'
 title: 'Profile'
 ---
 
-I'm Stephen Niedzielski. I live in the city of Denver, Colorado, United States
-with my partner, J., and our cat, Fritz. My pronouns are he/him.
+I'm Stephen Niedzielski.
+
+My pronouns are he/him.
+
+I grew up in Pennsylvania. I currently live in the city of Denver, Colorado of
+the United States with my partner, J., and our cat, Fritz.
 
 I publish select works under [oidoid](https://oidoid.com).
 
 My email address is [stephen@niedzielski.com](mailto:stephen@niedzielski.com).
 
-I work at Reddit. See [my resume (PDF)](stephen-niedzielski-resume.pdf).
+I work at Reddit on the Developer Platform team. See
+[my resume (PDF)](stephen-niedzielski-resume.pdf).
+
+Programming is at the center of my life. Mostly TypeScript these days.
 
 ## Elsewhere
 

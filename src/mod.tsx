@@ -1,4 +1,4 @@
-#!/usr/bin/env -S deno run --allow-read --allow-write --quiet
+#!/usr/bin/env -S deno --quiet run --allow-read --allow-write --no-prompt
 import { createWalkEntry } from 'std/fs/_util.ts';
 import { expandGlob, WalkEntry } from 'std/fs/mod.ts';
 import { ArticleEl, IndexEl } from '@/el/TemplateEl.tsx';
