@@ -1,0 +1,42 @@
+<!doctype html><html lang="en" data-reactroot=""><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><meta name="keywords" content="game dev,hardware,school,DigiPen"/><meta name="theme-color" content="#f2f5f5"/><meta name="creator" content="Stephen Niedzielski"/><link rel="canonical" href="https://niedzielski.com/log/2008-02-16"/><meta http-equiv="Content-Security-Policy" content="default-src &#x27;none&#x27;; img-src &#x27;self&#x27; data:; script-src &#x27;unsafe-inline&#x27;; style-src &#x27;self&#x27;; connect-src &#x27;self&#x27;; media-src &#x27;self&#x27;"/><title>2008-02-16: swankmania - NIEDZIELSKI</title><link rel="stylesheet" href="/index.css"/><link rel="icon" href="/favicon.png?v=0.0.0"/></head><body><header><nav><ul class="nav__list"><li class="nav__link-item"><a class="nav__link" href="/"><img class="logo" src="/logo.png" width="160" height="24" alt="NIEDZIELSKI"/></a></li><li class="nav__link-item"><a class="nav__link" href="/works">Works</a></li><li class="nav__link-item"><a class="nav__link" href="/notes">Notes</a></li><li class="nav__link-item"><a class="nav__link" href="/log">Log</a></li><li class="nav__link-item"><a class="nav__link" href="/stephen">Profile</a></li></ul></nav></header><div class="page"><main><h1 class="heading heading--1" id="title"><a class="heading__fragment" href="#title">#</a>2008-02-16: swankmania</h1><span class="subtitle">My favorite school project.</span><div class="markdown"><p><a href="swankmania-logo.png"><img src="swankmania-logo.png" alt="swankmania logo."></a>
+<a href="blit-logo.png"><img src="blit-logo.png" alt="BLiT logo."></a></p>
+<p>swankmania was a neat one semester project I did in the Fall of 2007. It was a
+portable gaming device featuring a liquid crystal display (LCD), vector
+graphics, and a vintage controller. As I needed to demonstrate the capabilities
+of swankmania, I also designed BLiT, a small game in the vein of Asteroids.</p>
+<p>The most interesting and challenging aspect of swankmania was designing the
+vector graphics controller. This component is responsible for receiving model
+vertices, color, mode, and other information and rasterizing their
+representations on the LCD using a double buffered frame. As the throughput
+needed to update the LCD many times a second was great, I developed the
+mechanism on a field programmable gate array (FPGA) using synchronous and
+asynchronous elements. Since there was only room for one frame on the FPGA, I
+also interfaced with external RAM for the second frame. For line drawing, I
+implemented a variation of the well known Bresenham algorithm in hardware.</p>
+<p>Design on the FPGA incorporated multiple clock domains for the LCD controller,
+rasterizer, and communications buffer. At completion, the device was capable of
+updating every pixel on the 240 x 160 screen about 30 times over without missing
+a frame at 72 frames per second.</p>
+<p>BLiT was a very simple Asteroids-like game that demonstrated some of the neat
+lossless aspects of vector graphics like scaling and rotation. I wrote BLiT
+mostly in C on a microcontroller that interfaced with the vector graphics
+controller and an old input controller from the Nintendo Entertainment System.</p>
+<p>Special thanks goes to Christopher Theriault for designing the LCD printed
+circuit board (PCB), Mike Anderson for rendering tips and miscellanies, Cesar
+Carrasco for soldering components to the LCD PCB, and Todd Seiler for
+miscellanies.</p>
+<p>Here&#39;s some photos of the project:</p>
+<p><a href="dsc05751.jpg"><img src="dsc05751.jpg" alt="Start up screen featuring the school logo as a bitmap."></a>
+<a href="dsc05762.jpg"><img src="dsc05762.jpg" alt="BLiT screenshot."></a>
+<a href="dsc05763.jpg"><img src="dsc05763.jpg" alt="BLiT screenshot."></a>
+<a href="dsc05786.jpg"><img src="dsc05786.jpg" alt="Photograph of all of the hardware."></a></p>
+<p><em>Addendum (2022-09-23): swankmania, the physical, one-of-a-kind hodgepodge was
+stolen in transit from a college fair circa 2009. My computer containing all of
+swankmania&#39;s software sources and related materials, as well as my up-to-then
+life&#39;s work, was also stolen in a burglary in June, 2011 leaving nothing but
+these short notes. However, Chris Clark, a dear classmate one year my junior,
+saved some snapshot of swankmania I had given him and generously returned the
+favor on December 8th, 2012.
+<a href="https://github.com/niedzielski/swankmania">I&#39;ve since shared these sources on GitHub</a>,
+such as they are.</em></p>
+</div></main><footer><small class="footer__text">© Stephen Niedzielski. This page was published on<!-- --> <time dateTime="2022-09-23">2008-02-16</time> <!-- -->and modified<!-- --> <time dateTime="2022-09-23">2022-09-23</time>.</small></footer></div><script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","author":{"@type":"Person","name":"Stephen Niedzielski","url":"https://niedzielski.com"},"dateModified":"2022-09-23","datePublished":"2008-02-16","headline":"My favorite school project.","name":"2008-02-16: swankmania","url":"https://niedzielski.com/log/2008-02-16","publisher":{"@type":"Organization","logo":"https://oidoid.com/oidoid.png","name":"oidoid","url":"https://oidoid.com"}}</script></body></html>
