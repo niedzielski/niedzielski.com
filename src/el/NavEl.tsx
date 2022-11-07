@@ -1,12 +1,14 @@
 import React from 'react';
 
 // #dirs
-const links = [
-  ['Works', '/works'],
-  ['Notes', '/notes'],
-  ['Log', '/log'],
-  ['Profile', '/stephen'],
-];
+const links = Object.freeze(
+  [
+    ['Works', '/works'],
+    ['Notes', '/notes'],
+    ['Log', '/log'],
+    ['Profile', '/stephen'],
+  ] as const,
+);
 
 export function NavEl(): React.ReactElement {
   return (
