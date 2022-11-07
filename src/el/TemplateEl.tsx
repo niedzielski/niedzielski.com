@@ -106,8 +106,11 @@ export function TemplateEl({
         <NavEl />
       </header>
       <div className='page'>
-        <main>{children}</main>
+        <main className='content'>
+          {children}
+        </main>
         <footer>
+          {/* <a href='/'>🖜 Back to the table-of-contents</a>. */}
           <small className='footer__text'>
             © Stephen Niedzielski. This page was published on{' '}
             <time dateTime={article.meta.dateModified}>

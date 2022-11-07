@@ -6,8 +6,8 @@ export type HTMLPageProps = Readonly<{
   datePublished: string;
   keywords: string[];
   headline: string;
-  image?: string;
-  title?: string;
+  image?: string | undefined;
+  title?: string | undefined;
   url: string;
 }>;
 
@@ -55,7 +55,7 @@ export function HTMLPageEl({
         <link rel='canonical' href={canonicalURL}></link>
         <meta
           http-equiv='Content-Security-Policy'
-          content="default-src 'none'; img-src 'self' data:; script-src 'unsafe-inline'; style-src 'self'; connect-src 'self'; media-src 'self'"
+          content="upgrade-insecure-requests; form-action 'none'; base-uri: 'none'; frame-ancestors 'none'; default-src 'none'; img-src 'self' data:; script-src 'unsafe-inline'; style-src 'self'; connect-src 'self'; media-src 'self'"
         />
         <title>
           {title == null ? 'NIEDZIELSKI' : `${title} - NIEDZIELSKI`}
