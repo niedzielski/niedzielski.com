@@ -1,5 +1,5 @@
 ---
-dateModified: '2022-09-23'
+dateModified: '2022-11-06'
 datePublished: '2008-02-16'
 keywords: ['game dev', 'hardware', 'school', 'DigiPen']
 headline: 'My favorite school project.'
@@ -41,10 +41,10 @@ miscellanies.
 
 Here's some photos of the project:
 
-[![Start up screen featuring the school logo as a bitmap.](dsc05751.jpg)](dsc05751.jpg)
-[![BLiT screenshot.](dsc05762.jpg)](dsc05762.jpg)
-[![BLiT screenshot.](dsc05763.jpg)](dsc05763.jpg)
-[![Photograph of all of the hardware.](dsc05786.jpg)](dsc05786.jpg)
+[![Start up screen featuring the school logo as a bitmap.](swankmania-boot-screenshot.jpeg)](swankmania-boot-screenshot.jpeg)
+[![BLiT screenshot.](blit-screenshot-0.jpeg)](blit-screenshot-0.jpeg)
+[![BLiT screenshot.](blit-screenshot-1.jpeg)](blit-screenshot-1.jpeg)
+[![Photograph of all of the hardware.](swankmania-hardware.jpeg)](swankmania-hardware.jpeg)
 
 _Addendum (2022-09-23): swankmania, the physical, one-of-a-kind hodgepodge was
 stolen in transit from a college fair circa 2009. My computer containing all of
