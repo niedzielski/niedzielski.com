@@ -7,12 +7,16 @@ image: 'https://niedzielski.com/stephen.jpeg'
 title: 'Profile'
 ---
 
-I'm Stephen Niedzielski.
+I'm Stephen Niedzielski. I'm a programmer.
 
 My pronouns are he/him.
 
 I grew up in Pennsylvania. I currently live in the city of Denver, Colorado of
 the United States with my partner, J., and our cat, Fritz.
+
+I had a mix of public and homeschooling as well as a year of commercial arts
+vocational school. I graduated with a bachelor's of science in computer
+engineering from DigiPen Institute of Technology.
 
 I publish select works under [oidoid](https://oidoid.com).
 
