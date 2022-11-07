@@ -63,9 +63,12 @@ A similar screenshot but for Wikipedia with a multi-column experimental style:
 
 [![Multi-column Wikipedia.](wikipedia-multi-column-2022-10-05.png)](wikipedia-multi-column-2022-10-05.png)
 
-A book layout (Neuromancer):
+A book layout:
 
 [![Neuromancer by William Gibson.](neuromancer-2022-10-12.png)](neuromancer-2022-10-12.png)
+_Scan by [Internet Archive](https://archive.org) from
+[Neuromancer](https://archive.org/details/neuromancer0000gibs_b5r9/page/4/mode/2up?view=theater);
+© 1984 William Gibson._
 
 Interestingly, lynx also dumps a single column layout.
 
