@@ -12,7 +12,7 @@ I'm Stephen Niedzielski. I'm a programmer.
 My pronouns are he/him.
 
 I grew up in Pennsylvania. I currently live in the city of Denver, Colorado of
-the United States with my partner, J., and our cat, Fritz.
+the United States with my partner, J.
 
 I had a mix of public and homeschooling as well as a year of commercial arts
 vocational school. I graduated with a bachelor's of science in computer
@@ -22,7 +22,7 @@ I publish select works under [oidoid](https://oidoid.com).
 
 My email address is [stephen@niedzielski.com](mailto:stephen@niedzielski.com).
 
-I work at Reddit on the Developer Platform team. See
+I hack at Reddit on the Developer Platform team. See
 [my resume (PDF)](stephen-niedzielski-resume.pdf).
 
 Programming is at the center of my life. Mostly TypeScript these days.
@@ -36,6 +36,5 @@ Programming is at the center of my life. Mostly TypeScript these days.
 - [Hacker News](https://news.ycombinator.com/user?id=niedzielski)
 - [Work at a Startup](https://www.workatastartup.com) (profiles are not
   linkable)
-- [AngelList](https://angel.co/u/niedzielski)
 
 So there you have it.
