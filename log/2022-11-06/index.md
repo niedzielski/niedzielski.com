@@ -1,7 +1,7 @@
 ---
 dateModified: '2022-11-06'
 datePublished: '2022-11-06'
-keywords: ['blog', 'design', 'layout', 'web design', 'Sublime Solitaire',]
+keywords: ['blog', 'design', 'layout', 'web design', 'Sublime Solitaire']
 headline: 'Experimenting with newspaper design.'
 title: "2022-11-06: Multi-column layouts"
 ---
