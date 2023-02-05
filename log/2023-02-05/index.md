@@ -34,7 +34,7 @@ slumped and defeated, and finally, I carried his small, crumpled body away. A
 body I had carried so many, many times before, for he loved to be held and to be
 carried.
 
-I miss him heaps.
+So long, Fritzy. I miss you heaps.
 
 ## Work
 
