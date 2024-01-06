@@ -14,6 +14,7 @@ I contribute to:
 | [Bottles](https://usebottles.com)                       | [$24 / year](https://usebottles.com/funding)                         | 2022-02-21 |
 | [Debian](https://debian.org)                            | [$3 / month](https://debian.org/donations#spi)                       | 2022-01-09 |
 | [Electronic Frontier Foundation (EFF)](https://eff.org) | [$100 / year](https://supporters.eff.org/donate/join-eff-m--h)       | 2022-04-30 |
+| [Foliate](https://johnfactotum.github.io/foliate/)      | [$50 / year](https://www.buymeacoffee.com/johnfactotum)              | 2023-11-13 |
 | [Free Software Foundation (FSF)](https://fsf.org)       | [$100 / year](https://my.fsf.org/donate)                             | 2022-05-14 |
 | [GNOME Foundation](https://gnome.org)                   | [$3 / month](https://gnome.org/donate)                               | 2022-01-09 |
 | [LineageOS](https://lineageos.org)                      | [$2 / month](https://patreon.com/LineageOS)                          | 2022-05-01 |
