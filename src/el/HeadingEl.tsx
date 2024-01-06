@@ -2,12 +2,12 @@ import React from 'react';
 
 // import './HeadingEl.css'
 
-export type HeadingProps = Readonly<{
+export type HeadingProps = {
   /** Fragment identifier for linking. */
-  id?: string;
-  label: string;
-  level: HeadingLevel;
-}>;
+  readonly id?: string;
+  readonly label: string;
+  readonly level: HeadingLevel;
+};
 
 export type HeadingLevel = 1 | 2 | 3 | 4 | 5 | 6;
 

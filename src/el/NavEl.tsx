@@ -37,7 +37,10 @@ export function NavEl(): React.ReactElement {
   );
 }
 
-type NavLinkProps = Readonly<{ children: React.ReactNode; href: string }>;
+type NavLinkProps = {
+  readonly children: React.ReactNode;
+  readonly href: string;
+};
 
 function NavLink({ children, href }: NavLinkProps): React.ReactElement {
   return (

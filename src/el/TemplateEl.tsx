@@ -1,10 +1,10 @@
-import { HeadingEl } from '@/el/HeadingEl.tsx';
 import { HTMLPageEl } from '@/el/HTMLPageEl.tsx';
+import { HeadingEl } from '@/el/HeadingEl.tsx';
 import { NavEl } from '@/el/NavEl.tsx';
-import React from 'react';
 import type { Article } from '@/types/Article.ts';
+import React from 'react';
 
-export type ArticleProps = Readonly<{ article: Readonly<Article> }>;
+export type ArticleProps = { readonly article: Readonly<Article> };
 
 export function ArticleEl({ article }: TemplateProps): React.ReactElement {
   switch (article.type) {
@@ -38,7 +38,7 @@ export function ArticleEl({ article }: TemplateProps): React.ReactElement {
   }
 }
 
-export type HomepageProps = Readonly<{ article: Readonly<Article> }>;
+export type HomepageProps = { readonly article: Readonly<Article> };
 
 export function HomepageEl({ article }: TemplateProps): React.ReactElement {
   return (
@@ -48,7 +48,7 @@ export function HomepageEl({ article }: TemplateProps): React.ReactElement {
   );
 }
 
-export type MarkdownProps = Readonly<{ dangerousHTML: string }>;
+export type MarkdownProps = { readonly dangerousHTML: string };
 
 export function MarkdownEl(
   { dangerousHTML }: MarkdownProps,
@@ -61,10 +61,10 @@ export function MarkdownEl(
   );
 }
 
-export type IndexProps = Readonly<{
-  article: Readonly<Article>;
-  subarticles: readonly Readonly<Article>[];
-}>;
+export type IndexProps = {
+  readonly article: Readonly<Article>;
+  readonly subarticles: readonly Readonly<Article>[];
+};
 
 export function IndexEl({
   article,
@@ -83,10 +83,10 @@ export function IndexEl({
   );
 }
 
-export type TemplateProps = Readonly<{
-  article: Readonly<Article>;
-  children?: React.ReactNode;
-}>;
+export type TemplateProps = {
+  readonly article: Readonly<Article>;
+  readonly children?: React.ReactNode;
+};
 
 export function TemplateEl({
   article,

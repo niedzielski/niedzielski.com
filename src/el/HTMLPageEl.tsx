@@ -1,15 +1,15 @@
 import React from 'react';
 
-export type HTMLPageProps = Readonly<{
-  children: React.ReactNode;
-  dateModified: string;
-  datePublished: string;
-  keywords: string[];
-  headline: string;
-  image?: string | undefined;
-  title?: string | undefined;
-  url: string;
-}>;
+export type HTMLPageProps = {
+  readonly children: React.ReactNode;
+  readonly dateModified: string;
+  readonly datePublished: string;
+  readonly keywords: string[];
+  readonly headline: string;
+  readonly image?: string | undefined;
+  readonly title?: string | undefined;
+  readonly url: string;
+};
 
 export function HTMLPageEl({
   children,
