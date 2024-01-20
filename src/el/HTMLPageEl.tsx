@@ -21,14 +21,14 @@ export function HTMLPageEl({
   title,
   url,
 }: HTMLPageProps): React.ReactElement {
-  const canonicalURL = `https://niedzielski.com/${url}`;
+  const canonicalURL = `https://oidoid.com/${url}`;
   const blob = JSON.stringify({
     '@context': 'https://schema.org',
     '@type': 'Article',
     author: {
       '@type': 'Person',
       name: 'Stephen Niedzielski',
-      url: 'https://niedzielski.com',
+      url: 'https://oidoid.com',
     },
     dateModified,
     datePublished,
@@ -57,6 +57,7 @@ export function HTMLPageEl({
           http-equiv='Content-Security-Policy'
           content="upgrade-insecure-requests; form-action 'none'; base-uri: 'none'; frame-ancestors 'none'; default-src 'none'; img-src 'self' data:; script-src 'unsafe-inline'; style-src 'self'; connect-src 'self'; media-src 'self'"
         />
+        <meta http-equiv='refresh' content='0;url=https://oidoid.com' />
         <title>
           {title == null ? 'NIEDZIELSKI' : `${title} - NIEDZIELSKI`}
         </title>
